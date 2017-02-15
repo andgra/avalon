@@ -1,0 +1,18 @@
+<?
+$MESS["ORDER_PERMS_PERM_ADD"] = "User can edit settings";
+$MESS["ORDER_PERMS_BUTTONS_SAVE"] = "Save";
+$MESS["ORDER_PERMS_BUTTONS_APPLY"] = "Apply";
+$MESS["ORDER_PERMS_HEAD_ENTITY"] = "Entity";
+$MESS["ORDER_PERMS_HEAD_ADD"] = "Add";
+$MESS["ORDER_PERMS_HEAD_WRITE"] = "Update";
+$MESS["ORDER_PERMS_HEAD_READ"] = "Read";
+$MESS["ORDER_PERMS_HEAD_DELETE"] = "Delete";
+$MESS["ORDER_PERMS_FILED_NAME"] = "Role";
+$MESS["ORDER_PERMS_DLG_MESSAGE"] = "Are you sure you want to delete it?";
+$MESS["ORDER_PERMS_DLG_TITLE"] = "Delete role";
+$MESS["ORDER_PERMS_DLG_BTN"] = "Delete";
+$MESS["ORDER_PERMS_ROLE_DELETE"] = "Delete role";
+$MESS["ORDER_PERMS_PERM_INHERIT"] = "Inherit";
+$MESS["ORDER_PERMS_HEAD_EXPORT"] = "Export";
+$MESS["ORDER_PERMS_HEAD_IMPORT"] = "Import";
+?>

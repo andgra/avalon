@@ -1,0 +1,97 @@
+<?php
+$MESS["ORDER_FF_PHYSICAL"] = "физ. лицо";
+$MESS["ORDER_FF_CONTACT"] = "контакт";
+$MESS["ORDER_FF_AGENT"] = "контрагент";
+$MESS["ORDER_FF_DIRECTION"] = "направление";
+$MESS["ORDER_FF_NOMEN"] = "номенклатура";
+$MESS["ORDER_FF_COURSE"] = "курс";
+$MESS["ORDER_FF_GROUP"] = "группа";
+$MESS["ORDER_FF_FORMED_GROUP"] = "сформированная группа";
+$MESS["ORDER_FF_APP"] = "заявка";
+$MESS["ORDER_FF_REG"] = "регистрация";
+$MESS["ORDER_FF_STAFF"] = "персонал";
+$MESS["ORDER_FF_TEACHER"] = "преподаватель";
+$MESS["ORDER_FF_ROOM"] = "аудитория";
+$MESS["ORDER_FF_SCHEDULE"] = "занятие";
+$MESS["ORDER_FF_MARK"] = "оценка";
+
+$MESS["ORDER_TITLE_PHYSICAL"] = "Физ. лица";
+$MESS["ORDER_TITLE_CONTACT"] = "Контакты";
+$MESS["ORDER_TITLE_AGENT"] = "Контрагенты";
+$MESS["ORDER_TITLE_DIRECTION"] = "Направления";
+$MESS["ORDER_TITLE_NOMEN"] = "Номенклатуры";
+$MESS["ORDER_TITLE_COURSE"] = "Курсы";
+$MESS["ORDER_TITLE_GROUP"] = "Группы";
+$MESS["ORDER_TITLE_FORMED_GROUP"] = "Сформированные группы";
+$MESS["ORDER_TITLE_APP"] = "Заявки";
+$MESS["ORDER_TITLE_REG"] = "Регистрации";
+$MESS["ORDER_TITLE_STAFF"] = "Персонал";
+$MESS["ORDER_TITLE_TEACHER"] = "Преподаватели";
+$MESS["ORDER_TITLE_ROOM"] = "Аудитории";
+$MESS["ORDER_TITLE_SCHEDULE"] = "Расписание";
+$MESS["ORDER_TITLE_MARK"] = "Оценки";
+
+$MESS["ORDER_FF_LEAD"] = "лид";
+$MESS["ORDER_FF_OK"] = "Выбрать";
+$MESS["ORDER_FF_CANCEL"] = "Отмена";
+$MESS["ORDER_FF_CLOSE"] = "Закрыть";
+$MESS["ORDER_FF_SEARCH"] = "Поиск...";
+$MESS["ORDER_FF_NO_RESULT"] = "К сожалению, на ваш поисковый запрос ничего не найдено";
+$MESS["ORDER_FF_CHOICE"] = "Выбрать";
+$MESS["ORDER_FF_CHOICE_SIMILAR"] = "Выбрать из похожих";
+$MESS["ORDER_FF_CHANGE"] = "Изменить";
+$MESS["ORDER_FF_LAST"] = "Последние";
+$MESS["ORDER_FF_SEARCH"] = "Поиск";
+$MESS['ORDER_ENT_SEL_HLP_PREF_PHONE'] = 'Тел.';
+$MESS['ORDER_ENT_SEL_HLP_PREF_EMAIL'] = 'E-mail';
+$MESS["interface_form_select"] = "Выбрать";
+$MESS["interface_form_edit"] = "Изменить";
+$MESS["interface_form_similar_select"] = "Выбрать из похожих";
+$MESS["interface_form_add_new_entity"] = "Создать";
+$MESS["interface_form_add_dialog_btn_add"] = "Добавить";
+$MESS["interface_form_cancel"] = "Отменить";
+$MESS["interface_form_add_physical_dlg_title"] = "Быстрое создание физ. лица";
+$MESS["interface_form_add_physical_fld_legal"] = "Юридическое лицо";
+$MESS["interface_form_add_physical_fld_last_name"] = "Фамилия";
+$MESS["interface_form_add_physical_fld_name"] = "Имя";
+$MESS["interface_form_add_physical_fld_second_name"] = "Отчество";
+$MESS["interface_form_add_physical_fld_email"] = "E-mail";
+$MESS["interface_form_add_physical_fld_phone"] = "Телефон";
+$MESS["interface_form_add_physical_fld_gender"] = "Пол";
+$MESS["interface_form_add_physical_fld_gender_m"] = "Мужской";
+$MESS["interface_form_add_physical_fld_gender_f"] = "Женский";
+$MESS["interface_form_add_physical_fld_b_day"] = "Дата рождения";
+$MESS["interface_form_add_physical_fld_description"] = "Примечание";
+
+$MESS["interface_form_add_contact_dlg_title"] = "Быстрое создание контакта";
+$MESS["interface_form_add_contact_fld_last_name"] = "Фамилия";
+$MESS["interface_form_add_contact_fld_name"] = "Имя";
+$MESS["interface_form_add_contact_fld_second_name"] = "Отчество";
+$MESS["interface_form_add_contact_fld_email"] = "E-mail";
+$MESS["interface_form_add_contact_fld_phone"] = "Телефон";
+
+
+$MESS["interface_form_add_agent_dlg_title"] = "Быстрое создание контрагента";
+$MESS["interface_form_add_agent_fld_type"] = "Тип контрагента";
+$MESS["interface_form_add_agent_fld_legal"] = "Юридическое лицо";
+$MESS["interface_form_add_agent_fld_physical"] = "Физическое лицо";
+$MESS["interface_form_add_agent_fld_physical_title"] = "Физическое лицо";
+$MESS["interface_form_add_agent_fld_contact_title"] = "Контактное лицо";
+$MESS["interface_form_add_agent_fld_title"] = "Наименование";
+$MESS["interface_form_add_agent_fld_full_title"] = "Полное наименование";
+$MESS["interface_form_add_agent_fld_last_name"] = "Фамилия";
+$MESS["interface_form_add_agent_fld_name"] = "Имя";
+$MESS["interface_form_add_agent_fld_second_name"] = "Отчество";
+$MESS["interface_form_add_agent_fld_email"] = "E-mail";
+$MESS["interface_form_add_agent_fld_phone"] = "Телефон";
+$MESS["interface_form_add_agent_fld_contact_last_name"] = "Фамилия контакта";
+$MESS["interface_form_add_agent_fld_contact_name"] = "Имя контакта";
+$MESS["interface_form_add_agent_fld_contact_second_name"] = "Отчество контакта";
+$MESS["interface_form_add_agent_fld_contact_email"] = "E-mail контакта";
+$MESS["interface_form_add_agent_fld_contact_phone"] = "Телефон контакта";
+
+$MESS["interface_form_ajax_unknown_error"] = "При вызове серверного метода произошла ошибка";
+$MESS['interface_form_entity_selector_prefContactType'] = 'Тип';
+$MESS['interface_form_entity_selector_prefPhone'] = 'Тел.';
+$MESS['interface_form_entity_selector_prefEmail'] = 'E-mail';
+?>

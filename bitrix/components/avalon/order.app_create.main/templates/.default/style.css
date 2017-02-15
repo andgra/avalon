@@ -1,0 +1,7 @@
+.order-table-main-directions {
+    width: 90%;
+    border-collapse: collapse;
+}
+.order-table-main-directions td {
+    border: 1px solid black;
+}

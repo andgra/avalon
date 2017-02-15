@@ -1,0 +1,158 @@
+.ur-wait {
+	height: 31px;
+	width: 31px;
+	background: url(/bitrix/js/order/images/structure/wait.gif) no-repeat 0 0;
+}
+
+.order-structure-nav {
+	padding: 0;
+	margin-left: 20px;
+}
+.order-structure-title-bar {
+	color: black;
+	font: normal normal normal 12px/normal Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	padding-left: 4px
+}
+
+.order-structure-container {
+	height: 300px;
+	margin-bottom: -9px;
+	overflow: hidden;
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	white-space: nowrap;
+	min-width: 600px;
+}
+
+.order-structure-delimiter {
+	border-left: 1px solid #DCDCDC;
+	background-color: #EAEAEA;
+	display: inline-block;
+	height: 95%;
+	vertical-align: top;
+	width: 3px;
+}
+
+.order-structure-block-container {
+	padding: 11px 13px 0 12px;
+	vertical-align: top;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	white-space: normal;
+}
+.order-structure-direction-container {
+}
+.order-structure-nomen-container {
+}
+.order-structure-group-container {
+}
+.order-structure-list {
+	overflow: auto;
+	max-height:170px;
+	height:auto !important;
+	height:170px;
+}
+.order-structure-section-title {
+	margin: 11px 13px 0 12px;
+	cursor: pointer;
+	border-bottom: 1px solid #DCDCDC;
+}
+
+.order-structure-disabled {
+	cursor:not-allowed;
+	background-color: #e4e3dd;
+}
+
+a.order-structure-provider-button,
+a.order-structure-provider-button:active,
+a.order-structure-provider-button:link {
+	/*color: #000 !important;
+	text-decoration: none*/
+}
+
+a.order-structure-provider-button-selected {
+	background-color: #FFDF87;
+}
+
+a.order-structure-provider-button:hover {
+	background-color: #EFEFEF;
+}
+
+.order-structure-buttons-delimiter {
+	border-top: solid 1px #E5E5E5;
+	margin: 3px 3px 3px 3px;
+	height: 1px;
+	overflow: hidden;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	padding: 0px;
+}
+
+.order-structure-delete {
+	display: inline-block;
+	cursor: pointer;
+	width: 13px;
+	height: 13px;
+	vertical-align: middle;
+	background: url(/bitrix/js/order/images/controls-sprite.png) no-repeat 0 -283px;
+}
+
+.order-structure-vertical-drop {
+	display: inline-block;
+	width: 11px;
+	height: 10px;
+	vertical-align: middle;
+	background: url(/bitrix/js/order/images/order-icons.png) no-repeat -77px -18px;
+}
+.order-structure-vertical-opened {
+	background: url(/bitrix/js/order/images/order-icons.png) no-repeat -65px -18px;
+}
+
+.order-structure-delete:hover {
+	background: url(/bitrix/js/order/images/controls-sprite.png) no-repeat -17px -283px;
+}
+
+.order-structure-a-selected {
+	background-color: darkgrey;
+}
+
+ul.ul-treefree { padding-left:25px; }
+ul.ul-treefree ul { margin:0; padding-left:6px; }
+ul.ul-treefree li { position:relative; list-style:none outside none; border-left:solid 1px #999; margin:0; padding:0 0 0 19px; line-height:23px; }
+ul.ul-treefree li:before { content:''; display:block; border-bottom:solid 1px #999; position:absolute; width:18px; height:11px; left:0; top:0; }
+ul.ul-treefree li:last-child { border-left:0 none; }
+ul.ul-treefree li:last-child:before { border-left:solid 1px #999; }
+
+ul.ul-dropfree div.drop {
+	width:11px;
+	height:11px;
+	position:absolute;
+	z-index:10;
+	top:6px;
+	left:-6px;
+	background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAALCAIAAAD0nuopAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAE1JREFUeNpinDlzJgNlgAWI09LScEnPmjWLoAImrHpIAkwMFAMqGMGC6X44GzkIsHoQooAFTTVQKdbAwxOigyMsmIh3MC7ASHnqBAgwAD4CGeOiDhXRAAAAAElFTkSuQmCC');
+	background-position:-11px 0;
+	background-repeat:no-repeat;
+	cursor:pointer;
+}
+
+.order-structure-selected-item-title {
+	margin-left: 20px;
+}
+
+.order-structure-info-wrap {
+	display:inline-block;
+}
+.order-structure-info-wrap a {
+	white-space: nowrap;
+}
+
+.order-structure-buttons-wrap {
+	display:inline-block;
+}
+
+.order-structure-wraps-container {
+	display:inline-block;
+}
+

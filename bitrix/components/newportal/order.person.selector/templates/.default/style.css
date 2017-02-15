@@ -1,0 +1,25 @@
+.order-person-info-wrap {
+    display:inline-block;
+}
+
+.order-person-info-desc {
+    margin-top:2px;
+}
+
+.order-person-buttons-wrap {
+    vertical-align: top;
+    display:inline-block;
+}
+
+.order-person-wraps-container {
+    display:inline-block;
+}
+
+.order-person-buttons-wrap a {
+    text-decoration: underline
+}
+
+.order-person-info-title a,
+.order-offer-info-descrip-tem a[target="_blank"] {
+    border-bottom:1px dashed #5e5e5e;
+}

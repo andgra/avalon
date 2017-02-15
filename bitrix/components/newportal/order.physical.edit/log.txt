@@ -1,0 +1,65 @@
+Host: localhost
+Date: 2016-07-06 13:24:26
+Module: 
+array (
+  'request' => 
+  array (
+    'sessid' => '7513586445439d3592884ccc0faac292',
+    'ACTION' => 'SAVE_PHYSICAL',
+    'DATA' => 
+    array (
+      'id' => '',
+      'name' => 'Человек',
+      'secondName' => 'Отцовович',
+      'lastName' => 'Молодой',
+      'email' => 'mal@asd.fd',
+      'phone' => '5523232',
+    ),
+    'pma_lang' => 'ru',
+    'pma_collation_connection' => 'utf8_general_ci',
+    'pma_mcrypt_iv' => '/c7AUSEdovU=',
+    'phpMyAdmin' => 'ud4mf7jtqh6bpn05t8045nccll2mjgt4',
+    'BITRIX_SM_SOUND_LOGIN_PLAYED' => 'Y',
+    'PHPSESSID' => '4204371temd49epv01uasev967',
+    'BITRIX_SM_SALE_UID' => '0',
+    'BITRIX_SM_TIME_ZONE' => '-180',
+    'BITRIX_SM_GUEST_ID' => '102',
+    'BITRIX_SM_LAST_VISIT' => '06.07.2016 13:22:09',
+  ),
+)
+    AddMessage2Log
+	C:\Bitrix\www\bitrix\components\newportal\order.physical.edit\ajax.php:5
+----------
+Host: localhost
+Date: 2016-07-06 13:25:53
+Module: 
+array (
+  'request' => 
+  array (
+    'sessid' => '7513586445439d3592884ccc0faac292',
+    'ACTION' => 'SAVE_PHYSICAL',
+    'DATA' => 
+    array (
+      'id' => '',
+      'name' => 'Человек',
+      'secondName' => 'Отчествович',
+      'lastName' => 'Молодой',
+      'email' => 'mal@asd.fd',
+      'phone' => '5523232',
+    ),
+    'pma_lang' => 'ru',
+    'pma_collation_connection' => 'utf8_general_ci',
+    'pma_mcrypt_iv' => '/c7AUSEdovU=',
+    'phpMyAdmin' => 'ud4mf7jtqh6bpn05t8045nccll2mjgt4',
+    'BITRIX_SM_SOUND_LOGIN_PLAYED' => 'Y',
+    'PHPSESSID' => '4204371temd49epv01uasev967',
+    'BITRIX_SM_SALE_UID' => '0',
+    'XDEBUG_SESSION' => '18023',
+    'BITRIX_SM_GUEST_ID' => '102',
+    'BITRIX_SM_LAST_VISIT' => '06.07.2016 13:25:38',
+    'BITRIX_SM_TIME_ZONE' => '-180',
+  ),
+)
+    AddMessage2Log
+	C:\Bitrix\www\bitrix\components\newportal\order.physical.edit\ajax.php:5
+----------

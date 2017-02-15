@@ -1,0 +1,6 @@
+<?
+$MESS["ORDER_PERMS_ROlE_EDIT_NAME"] = "Edit role";
+$MESS["ORDER_PERMS_ROlE_EDIT_DESCRIPTION"] = "Edit ORDER role";
+$MESS["ORDER_CONFIG_NAME"] = "Settings";
+$MESS["ORDER_NAME"] = "ORDER";
+?>

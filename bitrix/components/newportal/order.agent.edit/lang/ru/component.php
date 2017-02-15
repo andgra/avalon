@@ -1,0 +1,30 @@
+<?
+$MESS["ORDER_MODULE_NOT_INSTALLED"] = "Модуль order не установлен.";
+$MESS["ORDER_PERMISSION_DENIED"] = "Доступ запрещен";
+$MESS["UNKNOWN_ERROR"] = "Неизвестная ошибка";
+$MESS["ORDER_DELETE_ERROR"] = "Ошибка удаления";
+$MESS["ORDER_SECTION_AGENT_INFO"] = "Основная информация";
+$MESS["ORDER_FIELD_ID"] = "ID";
+$MESS["ORDER_FIELD_LEGAL"] = "Тип контрагента";
+$MESS["ORDER_LEGAL_Y"] = "Юридическое лицо";
+$MESS["ORDER_LEGAL_N"] = "Физическое лицо";
+$MESS['ORDER_FIELD_GUID']='Физ. лицо';
+$MESS['ORDER_FIELD_TITLE']='Наименование';
+$MESS['ORDER_FIELD_FULL_TITLE']='Полное наименование';
+$MESS['ORDER_FIELD_INN']='ИНН';
+$MESS['ORDER_FIELD_KPP']='КПП';
+$MESS['ORDER_FIELD_CODE_PO']='Код по ОКПО';
+$MESS['ORDER_FIELD_CONTACT_FULL_NAME']='Контактное лицо';
+$MESS['ORDER_FIELD_CONTACT_PHONE']='Телефон контакта';
+$MESS['ORDER_FIELD_CONTACT_EMAIL']='Email контакта';
+$MESS['ORDER_FIELD_PHONE']='Телефон';
+$MESS['ORDER_FIELD_EMAIL']='Email';
+$MESS['ORDER_FIELD_LEGAL_SHIP_ADDRESS']='Адрес доставки';
+$MESS['ORDER_FIELD_LEGAL_MAIL_ADDRESS']='Почтовый адрес';
+$MESS['ORDER_FIELD_LEGAL_FAX']='Факс';
+$MESS['ORDER_FIELD_LEGAL_OTHER']='Другое';
+$MESS['ORDER_FIELD_FACT_ADDRESS']='Фактический адрес';
+$MESS['ORDER_FIELD_LEGAL_ADDRESS']='Юридический адрес';
+$MESS['ORDER_FIELD_MODIFY_DATE']='Дата последнего изменения';
+$MESS['ORDER_FIELD_MODIFY_BY_ID']='Кем изменена';
+?>

@@ -1,0 +1,16 @@
+<?
+$MESS["ORDER_PERMS_TYPE_NONE"] = "Access denied.";
+$MESS["ORDER_PERMS_PERM_ADD"] = "Add access permission";
+$MESS["ORDER_PERMS_PERM_DELETE"] = "Delete";
+$MESS["ORDER_PERMS_ROLE_ADD"] = "Add";
+$MESS["ORDER_PERMS_ROLE_EDIT"] = "Edit";
+$MESS["ORDER_PERMS_ROLE_DELETE"] = "Delete";
+$MESS["ORDER_PERMS_ROLE_LIST"] = "Roles";
+$MESS["ORDER_PERMS_PERM_ROLE"] = "ORDER role";
+$MESS["ORDER_PERMS_PERM_ENTITY"] = "User";
+$MESS["ORDER_PERMS_BUTTONS_SAVE"] = "Save";
+$MESS["ORDER_PERMS_BUTTONS_CANCEL"] = "Cancel";
+$MESS["ORDER_PERMS_DLG_MESSAGE"] = "Are you sure you want to delete it?";
+$MESS["ORDER_PERMS_DLG_TITLE"] = "Delete role";
+$MESS["ORDER_PERMS_DLG_BTN"] = "Delete";
+?>

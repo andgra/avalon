@@ -1,0 +1,12 @@
+<?
+$MESS["ORDER_ENTITY_TYPE"] = "Entity Type";
+$MESS["ORDER_ENTITY_ID"] = "Entity ID";
+$MESS["ORDER_EVENT_COUNT"] = "Events Per Page";
+$MESS["ORDER_EVENT_ENTITY_LINK"] = "Show Entity Title";
+$MESS["ORDER_ENTITY_TYPE_LEAD"] = "Lead";
+$MESS["ORDER_ENTITY_TYPE_CONTACT"] = "Contact";
+$MESS["ORDER_ENTITY_TYPE_COMPANY"] = "Company";
+$MESS["ORDER_ENTITY_TYPE_DEAL"] = "Deal";
+$MESS["ORDER_NAME_TEMPLATE"] = "Name format";
+$MESS["ORDER_ENTITY_TYPE_QUOTE"] = "Quote";
+?>

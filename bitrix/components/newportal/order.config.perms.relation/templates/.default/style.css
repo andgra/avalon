@@ -1,0 +1,124 @@
+A.orderPermA {
+	display: block; 
+	float:left; 
+	width: 13px; 
+	height: 13px;  
+	cursor:pointer; 
+	margin-left: 3px;
+	margin-top: 3px;
+}
+A.orderPermADelete
+{
+	background:url(images/delete.gif) top left;
+}
+A.orderPermADelete:hover
+{
+	background:url(images/delete.gif) bottom left;
+}
+A.orderPermAEdit
+{
+	background:url(images/edit.gif) top left;
+}
+A.orderPermAEdit:hover
+{
+	background:url(images/edit.gif) bottom left;
+}
+
+table.orderRoleTable
+{
+	width: 100%; 
+	padding: 0;
+	margin: 0;
+}
+table.orderRoleTable tr:first-child th
+{
+	background-color: #f4f0d2;
+	border: 1px solid #ece8cb;
+	/*height: 30px;*/
+	/*line-height: 30px;*/
+	padding: 0.7em 1em;
+	color: #8a8877;
+	text-align: left;
+}
+
+table.orderRoleTable tr td
+{
+	text-align: left;
+	padding: 10px;
+	padding-right: 3px;
+	border-right: 1px solid #e3e3e3;
+	border-left: 1px solid #e3e3e3;
+	border-bottom: 1px solid #e3e3e3;
+}
+table.orderRoleTable tr td div.orderRole
+{
+	height: 20px;
+}
+
+table.orderPermTable {
+	width: 100%; 
+	padding: 0;
+	margin: 0;
+}
+table.orderPermTable tr:first-child th:first-child
+{
+	border: 1px solid #ece8cb;	
+	border-right: 0;
+}
+table.orderPermTable tr:first-child th.last-child
+{
+	border-right: 1px solid #ece8cb;
+}
+table.orderPermTable tr:first-child th
+{
+	padding: 0.7em 1em;
+	border-left: 0;
+	background-color: #f4f0d2;	
+	border-bottom: 1px solid #ece8cb;
+	/*height: 30px;*/
+	/*line-height: 30px;*/
+	text-align: left;
+}
+table.orderPermTable tr td:first-child
+{
+	border-left: 1px solid #e3e3e3;
+	border-right: 0;
+	padding-left: 10px;
+	text-align: left;
+}
+table.orderPermTable tr td:last-child
+{
+	border-right: 1px solid #e3e3e3;
+	width: 194px;
+}
+
+table.orderPermTable tr td.last-child
+{
+    border-right: 1px solid #e3e3e3;
+    width: 194px;
+}
+tr.orderPermTableTrRow td.orderPermTableTrA
+{
+	border-right: 1px solid #e3e3e3;
+	padding: 2px 10px;
+}
+table.orderPermTable tr td
+{
+	padding: 0.4em 0.6em;
+	border-bottom: 1px solid #e3e3e3;	
+	border-left: 0;
+	border-top: 0;
+	vertical-align: middle;
+	text-align: left;
+    /*line-height: 30px;*/
+	/*height: 30px;*/
+}
+table.orderPermTable tr.AddPerm td { border: 0 }
+table.orderPermTable tr:last-child td { border: 0 }
+table.orderPermTable tr td select
+{
+	width: 175px;
+	border: 1px solid #e3e3e3;
+	margin-right: 2px;
+}
+

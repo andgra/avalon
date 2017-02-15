@@ -1,0 +1,30 @@
+.basket_entity_delete {
+    color:red;
+    cursor: pointer;
+}
+.order-basket-legend {
+    font-size: 0.8em;
+}
+#basket {
+    position: relative;
+    /*visibility: hidden;*/
+    margin-top:34px;
+    width: 500px;
+    border: 1px solid black;
+    /*float: right;*/
+    padding: 10px;
+}
+#basket table {
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    width:100%;
+}
+#basket table td{
+    border-top: 1px solid black;
+}
+#basket table td, #basket table th{
+    border-left: 1px solid black;
+}
+#basket table td:first-of-type, #basket table th:first-of-type{
+    border-left: 0;
+}

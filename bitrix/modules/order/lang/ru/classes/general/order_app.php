@@ -1,0 +1,34 @@
+<?php
+$MESS['ORDER_PERMISSION_DENIED']='Доступ запрещен';
+$MESS['ORDER_ERROR_FIELD_IS_MISSING'] = "Не введено значение обязательного поля \"%FIELD_NAME%\"";
+$MESS['ORDER_ERROR_FIELD_INCORRECT']= "Не корректно заполнено поле \"%FIELD_NAME%\"";
+$MESS['ORDER_ERROR_NOT_FOUND']= "Не найден элемент # ";
+$MESS['ORDER_FIELD_COMPARE_ID']='Изменен ID';
+$MESS['ORDER_FIELD_COMPARE_PAST']='Изменено "Обучался ли ранее"';
+$MESS['ORDER_FIELD_COMPARE_STATUS']='Изменен статус';
+$MESS['ORDER_FIELD_COMPARE_AGENT_ID']='Изменен контрагент';
+$MESS['ORDER_FIELD_COMPARE_AGENT_LEGAL']='Изменен тип контрагента';
+$MESS['ORDER_FIELD_COMPARE_AGENT_TITLE']='Изменено наименование контрагента';
+$MESS['ORDER_FIELD_COMPARE_AGENT_PHONE']='Изменен телефон контрагента';
+$MESS['ORDER_FIELD_COMPARE_AGENT_EMAIL']='Изменен Email контрагента';
+$MESS['ORDER_FIELD_COMPARE_CONTACT_FULL_NAME']='Изменено ФИО контактного лица';
+$MESS['ORDER_FIELD_COMPARE_CONTACT_PHONE']='Изменен телефон контактного лица';
+$MESS['ORDER_FIELD_COMPARE_CONTACT_EMAIL']='Изменен Email контактного лица';
+$MESS['ORDER_FIELD_COMPARE_ASSIGNED_ID']='Изменен ответственный';
+$MESS['ORDER_FIELD_COMPARE_SOURCE']='Изменен источник';
+$MESS['ORDER_FIELD_COMPARE_PERIOD']='Изменен срок';
+$MESS['ORDER_FIELD_COMPARE_DESCRIPTION']='Изменено примечание';
+$MESS['ORDER_FIELD_COMPARE_HAND_MADE']='Изменено "Создано вручную"';
+$MESS['ORDER_FIELD_ID']='ID';
+$MESS['ORDER_FIELD_AGENT_EMAIL']='Email контрагента';
+$MESS['ORDER_FIELD_CONTACT_EMAIL']='Email контактного лица';
+$MESS['ORDER_FIELD_PAST']='Обучался ли ранее';
+$MESS['ORDER_FIELD_PERIOD']='Срок';
+$MESS['ORDER_FIELD_STATUS']='Статус';
+$MESS['ORDER_FIELD_HAND_MADE']='Создано вручную';
+$MESS['ORDER_ERROR_STATUS_NOT_PERMITTED']='Эта заявка не может быть сохранена с данным статусом <br> Причина: %REASON%';
+$MESS['ORDER_ERROR_REASON_REG']='для заявок от физ. лиц регистрации должны быть корректно заполнены';
+$MESS['ORDER_ERROR_REASON_APP']='контрагент не выбран';
+$MESS["ORDER_APP_UPDATE_CANCELED"] = "Обновление заявки отменено обработчиком события: \"#NAME#\"";
+$MESS["ORDER_APP_CREATION_CANCELED"] = "Создание заявки отменено обработчиком события: \"#NAME#\"";
+?>

@@ -1,0 +1,22 @@
+
+#list td, #list th {
+    border:1px solid black;
+    text-align: center;
+}
+#list table {
+    border-collapse: collapse;
+}
+#list th {
+    font-weight: normal;
+}
+#list tr td:first-child {
+    text-align: left;
+}
+#list span {
+    cursor: pointer;
+    color:#2067b0;
+}
+#list {
+    width:80%;
+    min-width: 750px;
+}

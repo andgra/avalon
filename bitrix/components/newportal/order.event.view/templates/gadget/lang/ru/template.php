@@ -1,0 +1,8 @@
+<?
+$MESS["ORDER_EVENT_ENTITY_LEAD"] = "лид";
+$MESS["ORDER_EVENT_ENTITY_CONTACT"] = "контакт";
+$MESS["ORDER_EVENT_ENTITY_COMPANY"] = "компания";
+$MESS["ORDER_EVENT_ENTITY_DEAL"] = "сделка";
+$MESS["ORDER_EVENT_ENTITY_QUOTE"] = "предложение";
+$MESS["ORDER_EVENT_EMPTY"] = "Нет записей";
+?>

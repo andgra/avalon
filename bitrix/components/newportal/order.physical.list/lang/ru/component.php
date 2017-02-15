@@ -1,0 +1,37 @@
+<?
+$MESS["ORDER_MODULE_NOT_INSTALLED"] = "Модуль order не установлен.";
+$MESS['ORDER_COLUMN_ID']='GUID';
+$MESS['ORDER_COLUMN_LAST_NAME']='Фамилия';
+$MESS['ORDER_COLUMN_NAME']='Имя';
+$MESS['ORDER_COLUMN_SECOND_NAME']='Отчество';
+$MESS['ORDER_COLUMN_FULL_NAME']='ФИО';
+$MESS['ORDER_COLUMN_SHARED']='Есть в 1С';
+$MESS['ORDER_COLUMN_BDAY']='Дата рождения';
+$MESS['ORDER_COLUMN_EMAIL']='Email';
+$MESS['ORDER_COLUMN_PHONE']='Телефон';
+$MESS['ORDER_COLUMN_GENDER']='Пол';
+$MESS['ORDER_COLUMN_OUT_ADDRESS']='Адрес за пределами РФ';
+$MESS['ORDER_COLUMN_REG_ADDRESS']='Адрес по прописке';
+$MESS['ORDER_COLUMN_LIVE_ADDRESS']='Адрес проживания';
+$MESS['ORDER_COLUMN_OTHER']='Другая контактная информация';
+$MESS['ORDER_COLUMN_PROF_EDU']='Диплом о проф. образовании';
+$MESS['ORDER_COLUMN_LVL_EDU']='Уровень образования';
+$MESS['ORDER_COLUMN_NATION']='Гражданство';
+$MESS['ORDER_COLUMN_ZIP_CODE']='Индекс';
+$MESS['ORDER_COLUMN_REGION']='Код региона';
+$MESS['ORDER_COLUMN_BPLACE']='Место рождения';
+$MESS['ORDER_COLUMN_SECOND_EDU']='Второе высшее';
+$MESS['ORDER_COLUMN_CERT_MID_EDU']='Аттестат о среднем образовании';
+$MESS['ORDER_COLUMN_SERIAL_DIP']='Серия диплом';
+$MESS['ORDER_COLUMN_NOM_DIP']='Номер диплом';
+$MESS['ORDER_COLUMN_WHO_DIP']='Кем выдан диплом';
+$MESS['ORDER_COLUMN_WHEN_DIP']='Когда выдан диплом';
+$MESS['ORDER_COLUMN_END_YEAR']='Год окончания';
+$MESS['ORDER_COLUMN_HONORS_DIP']='Наличие диплома с отличием';
+$MESS['ORDER_COLUMN_ORIGINAL_DIP']='Предоставлен подлинник';
+$MESS['ORDER_COLUMN_DESCRIPTION']='Примечание';
+$MESS['ORDER_COLUMN_MODIFY_DATE']='Дата последнего изменения';
+$MESS['ORDER_COLUMN_MODIFY_BY_ID']='Кем изменена';
+$MESS['ORDER_BUTTON_SAVE']='Сохранить';
+$MESS['ORDER_BUTTON_APPLY']='Применить';
+?>

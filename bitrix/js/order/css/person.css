@@ -1,0 +1,84 @@
+.ur-wait {
+	height: 31px;
+	width: 31px;
+	background: url(/bitrix/js/order/images/person/wait.gif) no-repeat 0 0;
+}
+
+.order-person-nav {
+	padding: 0;
+	margin-left: 20px;
+}
+.order-person-title-bar {
+	color: black;
+	font: normal normal normal 12px/normal Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	padding-left: 4px
+}
+
+.order-person-container {
+	height: 485px;
+	margin-bottom: -9px;
+	overflow-y: auto;
+	overflow-x: hidden;
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	white-space: nowrap;
+	min-width: 600px;
+	padding-bottom: 8px;
+}
+
+.order-person-create-container {
+}
+
+.order-person-search-container label,
+.order-person-create-container label {
+	width:7em;
+	display: inline-block;
+	text-align: right;
+}
+
+.order-person-search-container input,
+.order-person-create-container input {
+	width:calc(100% - 8em);
+	display: inline-block;
+}
+
+.order-person-list-container {
+	width: 100%;
+}
+
+.order-person-overflow-div {
+	overflow-y: auto;
+	overflow-x: hidden;
+	border: 1px solid black;
+	width: 99%;
+	max-height:200px;
+	min-height:200px;
+}
+.order-person-search-container + .order-person-list-container .order-person-agent-list,
+.order-person-create-container + .order-person-list-container .order-person-physical-list {
+	max-height:235px;
+}
+.order-person-search-container + .order-person-list-container .order-person-physical-list {
+	max-height:270px;
+}
+.order-person-search-container + .order-person-list-container .order-person-legal {
+	max-height:300px !important;
+	height:300px;
+}
+
+.order-person-list-table {
+	width: 100%;
+}
+
+
+/*.order-person-list {
+	overflow: auto;
+	max-height:100px;
+	height:auto !important;
+	height:100px;
+}*/
+
+.order-person-errors-container {
+	color: red;
+}
+

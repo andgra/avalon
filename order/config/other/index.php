@@ -1,0 +1,11 @@
+<?
+require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
+IncludeModuleLangFile($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/intranet/public/order/config/other/index.php");
+$APPLICATION->SetTitle(GetMessage("ORDER_TITLE"));
+?><?$APPLICATION->IncludeComponent(
+	"newportal:order.config.other",
+	"",
+	Array(
+	),
+false
+);?><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
