@@ -204,6 +204,11 @@ if (isset($_REQUEST["mode"]) && $_REQUEST["mode"] != '') {
     <?
     die();
 }
+
+$path['DIRECTION']=OrderCheckPath('PATH_TO_DIRECTION_EDIT', '', '/order/direction/edit/#direction_id#');
+$path['NOMEN']=OrderCheckPath('PATH_TO_NOMEN_EDIT', '', '/order/nomen/edit/#nomen_id#');
+$path['GROUP']=OrderCheckPath('PATH_TO_GROUP_EDIT', '', '/order/group/edit/#group_id#');
+$path['FORMED_GROUP']=OrderCheckPath('PATH_TO_FORMED_GROUP_EDIT', '', '/order/formed_group/edit/#formed_group_id#');
 $answer = array();
 $filter = array();
 $selectable = array('direction', 'nomen', 'group', 'formed_group');
@@ -283,11 +288,13 @@ if ($mode == 'layout') {
     if(isset($filter['DIRECTION_ID'])) {
         $res = COrderDirection::GetListEx(array(),array('ID'=>$filter['DIRECTION_ID']));
         while($el=$res->Fetch()) {
+            $el['URL']=CComponentEngine::makePathFromTemplate($path['DIRECTION'], array('direction_id' => $el['ID']));
             $dirList[$el['ID']]=$el;
         }
     } else {
         $res = COrderDirection::GetTreeMenu();
         foreach ($res as $el) {
+            $el['URL']=CComponentEngine::makePathFromTemplate($path['DIRECTION'], array('direction_id' => $el['ID']));
             $dirList[$el['ID']]=$el;
         }
     }
@@ -332,6 +339,7 @@ if ($mode == 'layout') {
             $el['SELECTED'] = 'Y';
         } else
             $el['SELECTED'] = 'N';
+        $el['URL']=CComponentEngine::makePathFromTemplate($path['NOMEN'], array('nomen_id' => $el['ID']));
         $nomenList[$el['ID']] = $el;
     }
     $res = COrderGroup::GetListEx(array(), $arGroupFilter);
@@ -345,6 +353,7 @@ if ($mode == 'layout') {
             $el['SELECTED'] = 'Y';
         } else
             $el['SELECTED'] = 'N';
+        $el['URL']=CComponentEngine::makePathFromTemplate($path['GROUP'], array('group_id' => $el['ID']));
         $groupList[$el['ID']] = $el;
     }
     $res = COrderFormedGroup::GetListEx(array(), $arGroupFilter);
@@ -357,6 +366,7 @@ if ($mode == 'layout') {
             $el['SELECTED'] = 'Y';
         } else
             $el['SELECTED'] = 'N';
+        $el['URL']=CComponentEngine::makePathFromTemplate($path['FORMED_GROUP'], array('formed_group_id' => $el['ID']));
         $formedGroupList[$el['ID']] = $el;
     }
     foreach ($dirList as $num => $dir) {
@@ -478,6 +488,7 @@ if ($mode == 'layout') {
             $el['SELECTED'] = 'Y';
         else
             $el['SELECTED'] = 'N';
+        $el['URL']=CComponentEngine::makePathFromTemplate($path['NOMEN'], array('nomen_id' => $el['ID']));
         $nomenList[$el['ID']] = $el;
     }
     $res = COrderGroup::GetListEx(array(), $arGroupFilter);
@@ -488,6 +499,7 @@ if ($mode == 'layout') {
             $el['SELECTED'] = 'Y';
         else
             $el['SELECTED'] = 'N';
+        $el['URL']=CComponentEngine::makePathFromTemplate($path['GROUP'], array('group_id' => $el['ID']));
         $groupList[$el['ID']] = $el;
     }
     $res = COrderFormedGroup::GetListEx(array(), $arGroupFilter);
@@ -498,6 +510,7 @@ if ($mode == 'layout') {
             $el['SELECTED'] = 'Y';
         else
             $el['SELECTED'] = 'N';
+        $el['URL']=CComponentEngine::makePathFromTemplate($path['FORMED_GROUP'], array('formed_group_id' => $el['ID']));
         $formedGroupList[$el['ID']] = $el;
     }
 
@@ -519,6 +532,7 @@ if ($mode == 'layout') {
             $el['SELECTED'] = 'Y';
         else
             $el['SELECTED'] = 'N';
+        $el['URL']=CComponentEngine::makePathFromTemplate($path['GROUP'], array('group_id' => $el['ID']));
         $groupList[$el['ID']] = $el;
     }
     $res = COrderFormedGroup::GetListEx(array(), $arGroupFilter);
@@ -529,6 +543,7 @@ if ($mode == 'layout') {
             $el['SELECTED'] = 'Y';
         else
             $el['SELECTED'] = 'N';
+        $el['URL']=CComponentEngine::makePathFromTemplate($path['FORMED_GROUP'], array('formed_group_id' => $el['ID']));
         $formedGroupList[$el['ID']] = $el;
     }
     $answer['group'] = GetGroupListHtml($groupList, $formedGroupList,in_array('group',$selectable),in_array('formed_group',$selectable));

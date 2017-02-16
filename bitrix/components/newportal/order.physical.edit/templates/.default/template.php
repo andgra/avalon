@@ -83,7 +83,7 @@ $arResult['ORDER_CUSTOM_PAGE_TITLE'] =
 */
 $formCustomHtml = '<input type="hidden" name="physical_id" value="'.$elementID.'"/>'.$arResult['FORM_CUSTOM_HTML'];
 
-
+var_dump($arResult['ELEMENT']);
 $APPLICATION->IncludeComponent(
 	'newportal:order.interface.form.tactile',
 	'',

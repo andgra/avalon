@@ -33,7 +33,6 @@ class COrderDirection
         $modifyByJoin .= ' LEFT JOIN b_order_physical UP3 ON UF3.UF_GUID=UP3.ID';
 		$managerJoin = ' LEFT JOIN b_order_physical P ON L.MANAGER_ID = P.ID';
 		$parentJoin = ' LEFT JOIN b_order_direction D ON L.PARENT_ID = D.ID';
-		$nomenJoin = ' LEFT JOIN b_order_nomen N ON L.DEFAULT_NOMEN_ID = N.ID';
 		$rootJoin = ' LEFT JOIN b_order_direction R ON L.ROOT_ID = R.ID';
 
 		$result = array(
@@ -62,9 +61,6 @@ class COrderDirection
 			'MANAGER_ID' => array('FIELD' => 'L.MANAGER_ID', 'TYPE' => 'string'),
 			'MANAGER_FULL_NAME' => array('FIELD' => 'CONCAT (P.LAST_NAME, " ", P.NAME, " ", P.SECOND_NAME)', 'TYPE' => 'string', 'FROM' => $managerJoin),
 			'MANAGER_EMAIL' => array('FIELD' => 'P.EMAIL', 'TYPE' => 'string', 'FROM' => $managerJoin),
-
-			'DEFAULT_NOMEN_ID' => array('FIELD' => 'L.DEFAULT_NOMEN_ID', 'TYPE' => 'string'),
-			'DEFAULT_NOMEN_TITLE' => array('FIELD' => 'N.TITLE', 'TYPE' => 'string', 'FROM' => $nomenJoin),
 
 			'DESCRIPTION' => array('FIELD' => 'L.DESCRIPTION', 'TYPE' => 'string'),
 			'PRIVATE' => array('FIELD' => 'CASE WHEN L.PRIVATE<>"Y" THEN "N" ELSE "Y" END', 'TYPE' => 'string'),

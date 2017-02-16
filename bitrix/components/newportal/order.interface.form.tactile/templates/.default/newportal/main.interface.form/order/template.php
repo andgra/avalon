@@ -458,6 +458,23 @@ foreach($arSections as &$arSection):
 							);
 						endif;
 						break;
+					case 'order_structure_selector':
+						$APPLICATION->AddHeadScript('/bitrix/js/order/structure.js');
+						$params = isset($field['componentParams']) ? $field['componentParams'] : array();
+						if(!empty($params)):
+							$APPLICATION->IncludeComponent('newportal:order.structure.selector',
+								'',
+								array(
+									'ID' => $params['ID'],
+									'SELECTED' => $params['SELECTED'],
+									'READONLY' => $params['READONLY'],
+									'SHOW'=>$params['SHOW']
+								),
+								false,
+								array('HIDE_ICONS' => 'Y')
+							);
+						endif;
+						break;
 					case 'order_entity_selector':
 						$APPLICATION->AddHeadScript('/bitrix/js/order/order.js');
 						$params = isset($field['componentParams']) ? $field['componentParams'] : array();

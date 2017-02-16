@@ -495,7 +495,7 @@ if(typeof(BX.OrderControlPanelItem) === "undefined")
 					continue;
 				}
 
-				var className = BX.type.isNotEmptyString(childItem["icon"]) ? "order-menu-more-" + childItem["icon"] : "";
+				var className = BX.type.isNotEmptyString(childItem["icon"]) ? "order-menu-more-" + childItem["icon"] : (childItem["isActive"] && childItem["isActive"]==true ? "order-menu-item-active menu-popup-no-icon":"");
 				menuItems.push(
 					{ "text": name, "className": className , "href" : BX.type.isNotEmptyString(childItem["url"]) ? childItem["url"] : "" }
 				);

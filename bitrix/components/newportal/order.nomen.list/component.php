@@ -168,9 +168,10 @@ if(!$bInternal || strtoupper($arResult['EXTERNAL_TYPE'])!='DIRECTION') {
 }
 
 
-$arResult['SORT_VARS']=array('by'=>'by','order'=>'order');
-if(isset($_REQUEST['by']) && isset($_REQUEST['order'])) {
-    $arResult['SORT']=array($_REQUEST['by']=>$_REQUEST['order']);
+$sortPrefix=($bInternal?$arResult['GRID_ID']:"");
+$arResult['SORT_VARS']=array('by'=>$sortPrefix.'by','order'=>$sortPrefix.'order');
+if(isset($_REQUEST[$sortPrefix.'by']) && isset($_REQUEST[$sortPrefix.'order'])) {
+    $arResult['SORT']=array($_REQUEST[$sortPrefix.'by'] => $_REQUEST[$sortPrefix.'order']);
 }
 else {
     $arResult['SORT'] = array('TITLE' => 'asc');
@@ -179,11 +180,11 @@ else {
 
 
 if(!$bInternal) {
-    if (intval($arParams['DIRECTION_COUNT']) <= 0)
-        $arParams['DIRECTION_COUNT'] = 20;
+    if (intval($arParams['NOMEN_COUNT']) <= 0)
+        $arParams['NOMEN_COUNT'] = 20;
 
     $arNavParams = array(
-        'nPageSize' => $arParams['DIRECTION_COUNT']
+        'nPageSize' => $arParams['NOMEN_COUNT']
     );
 
     $arNavigation = CDBResult::GetNavParams($arNavParams);

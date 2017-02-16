@@ -77,10 +77,14 @@ foreach($arResult['DIRECTION'] as $id => $el) {
     $row=array(
         'ID' => '<a href="'.$el['PATH_TO_DIRECTION_EDIT'].'">'.$el['ID'].'</a>',
         'TITLE' => '<a href="'.$el['PATH_TO_DIRECTION_EDIT'].'">'.$el['TITLE'].'</a>',
-        'PARENT_ID' => ($el['PARENT_ID']!=''?'<a href="'.$el['PATH_TO_PARENT_EDIT'].'" target="_blank">'.$el['PARENT_TITLE'].'</a>':''),
         'MANAGER_ID' => '<a href="'.$el['PATH_TO_MANAGER'].'" target="_blank">'.$el['MANAGER_FULL_NAME'].'</a><br><small style="color:silver">'.$el['MANAGER_EMAIL'].'</small>',
         'MODIFY_BY_ID' => '<a href="'.$el['PATH_TO_MODIFY_BY'].'" target="_blank">'.$el['MODIFY_BY_FULL_NAME'].'</a><br><small style="color:silver">'.$el['MODIFY_BY_EMAIL'].'</small>',
     );
+    if(!$arResult['INTERNAL'] || strtoupper($arResult['EXTERNAL_TYPE'])!='DIRECTION') {
+        $row=array_merge($row,array(
+            'PARENT_ID' => ($el['PARENT_ID']!=''?'<a href="'.$el['PATH_TO_PARENT_EDIT'].'" target="_blank">'.$el['PARENT_TITLE'].'</a>':''),
+        ));
+    }
     $data['columns']=$row;
     $arData[]=$data;
 }
@@ -101,18 +105,31 @@ $gridManagerCfg = array(
     'filterFields' => array()
 );
 
-$top=$arResult['PAGE_NUM']*$arResult['PAGE_SIZE']<$arResult['ROWS_COUNT']?$arResult['PAGE_NUM']*$arResult['PAGE_SIZE']:$arResult['ROWS_COUNT'];
-$val=$arResult['ROWS_COUNT']==0?'0':(($arResult['PAGE_NUM']-1)*$arResult['PAGE_SIZE']+1).' - '.$top;
-$footer=array(
-    array(
-        'title' => GetMessage('ORDER_ALL'),
-        'value' => $arResult['ROWS_COUNT']
-    ),
-    array(
+
+$footer=array(array(
+    'title' => GetMessage('ORDER_ALL'),
+    'value' => $arResult['ROWS_COUNT']
+));
+$actions=array('delete' => $arResult['PERMS']['DELETE']);
+if(!$arResult['INTERNAL']) {
+
+    $top=$arResult['PAGE_NUM']*$arResult['PAGE_SIZE']<$arResult['ROWS_COUNT']?$arResult['PAGE_NUM']*$arResult['PAGE_SIZE']:$arResult['ROWS_COUNT'];
+    $val=$arResult['ROWS_COUNT']==0?'0':(($arResult['PAGE_NUM']-1)*$arResult['PAGE_SIZE']+1).' - '.$top;
+    $footer[]=array(
         'title'=>GetMessage('ORDER_SHOWN'),
         'value'=>$val
-    )
-);
+    );
+    $actions=array_merge($actions,array(
+        'custom_html' => $actionHtml,
+        'list' => $arActionList
+    ));
+
+} else {
+    $actions=array_merge($actions,array(
+        'add' => $arResult['PERMS']['ADD']
+    ));
+
+}
 
 $APPLICATION->IncludeComponent(
     'newportal:order.interface.grid',
@@ -123,15 +140,11 @@ $APPLICATION->IncludeComponent(
         'SORT' => $arResult['SORT'],
         'SORT_VARS' => $arResult['SORT_VARS'],
         'ROWS' => $arResult['GRID_DATA'],
-        'FOOTER' => $footer,
+        'FOOTER' =>$footer,
         'EDITABLE' =>  $arResult['PERMS']['EDIT'] ? 'Y' : 'N',
-        'ACTIONS' => array(
-            'delete' => $arResult['PERMS']['DELETE'],
-            'custom_html' => $actionHtml,
-            'list' => $arActionList
-        ),
+        'ACTIONS' => $actions,
         'ACTION_ALL_ROWS' => false,
-        'NAV_OBJECT' => $arResult['NAV_OBJECT'],
+        'NAV_OBJECT' => $arResult['INTERNAL']?false:$arResult['NAV_OBJECT'],
         'FORM_ID' => $arResult['FORM_ID'],
         'TAB_ID' => $arResult['TAB_ID'],
         'AJAX_MODE' => $arResult['AJAX_MODE'],

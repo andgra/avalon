@@ -679,7 +679,7 @@ while ($arEvent = $obRes->Fetch())
 				$oldExam=unserialize($arEvent['VALUE_OLD']);
 				$arEvent['VALUE_OLD']='';
 				if(count($oldExam)>0) {
-					$valExam = '<tr><th>' . GetMessage('ORDER_FIELD_COURSE_EXAM_TITLE') . '</th><th>' . GetMessage('ORDER_FIELD_COURSE_EXAM_MARK') . '</th></tr>';
+					$valExam = '<tr><th>' . GetMessage('ORDER_FIELD_COURSE_EXAM_TITLE') . '</th><th width="30%">' . GetMessage('ORDER_FIELD_COURSE_EXAM_MARK') . '</th></tr>';
 					foreach ($oldExam as $num => $item) {
 						$valExam .= '<tr><td>' . $item['EXAM_TITLE'] . '</td><td>' . $item['EXAM_MARK'] . '</td></tr>';
 					}
@@ -689,7 +689,7 @@ while ($arEvent = $obRes->Fetch())
 				$newExam=unserialize($arEvent['VALUE_NEW']);
 				$arEvent['VALUE_NEW']='';
 				if(count($newExam)>0) {
-					$valExam = '<tr><th>' . GetMessage('ORDER_FIELD_COURSE_EXAM_TITLE') . '</th><th>' . GetMessage('ORDER_FIELD_COURSE_EXAM_MARK') . '</th></tr>';
+					$valExam = '<tr><th>' . GetMessage('ORDER_FIELD_COURSE_EXAM_TITLE') . '</th><th width="30%">' . GetMessage('ORDER_FIELD_COURSE_EXAM_MARK') . '</th></tr>';
 					foreach ($newExam as $num => $item) {
 						$valExam .= '<tr><td>' . $item['EXAM_TITLE'] . '</td><td>' . $item['EXAM_MARK'] . '</td></tr>';
 					}
@@ -738,7 +738,7 @@ while ($arEvent = $obRes->Fetch())
 					$arEvent['VALUE_NEW'] = '<table>' . $valDoc . '</table>';
 				}
 			}
-			if($arEvent['ENTITY_FIELD']=='DOC') {
+			if($arEvent['ENTITY_FIELD']=='NOMEN') {
 				if (!isset($arNomen)) {
 					$res = COrderNomen::GetListEx(array(), array(), false, false, array('TITLE', 'ID'));
 					while ($el = $res->Fetch()) {
@@ -748,7 +748,7 @@ while ($arEvent = $obRes->Fetch())
 				$oldNomen = unserialize($arEvent['VALUE_OLD']);
 				$arEvent['VALUE_OLD'] = '';
 				if (count($oldNomen) > 0) {
-					$valNomen = '<tr><th>' . GetMessage('ORDER_FIELD_COURSE_NOMEN_ID') . '</th><th>' . GetMessage('ORDER_FIELD_COURSE_NOMEN_TITLE') . '</th></tr>';
+					$valNomen = '<tr><th width="25%">' . GetMessage('ORDER_FIELD_COURSE_NOMEN_ID') . '</th><th>' . GetMessage('ORDER_FIELD_COURSE_NOMEN_TITLE') . '</th></tr>';
 					foreach ($oldNomen as $num => $item) {
 						$valNomen .= '<tr><td>' . $item['NOMEN_ID'] . '</td>';
 						$valNomen .= '<td><a href="'.CComponentEngine::MakePathFromTemplate($arParams['PATH_TO_NOMEN_EDIT'], array('nomen_id' => $item['NOMEN_ID'])).'" target="_blank">' . $arNomen[$item['NOMEN_ID']]['TITLE'] . '</a></td></tr>';
@@ -759,7 +759,7 @@ while ($arEvent = $obRes->Fetch())
 				$newNomen = unserialize($arEvent['VALUE_NEW']);
 				$arEvent['VALUE_NEW'] = '';
 				if (count($newNomen) > 0) {
-					$valNomen = '<tr><th>' . GetMessage('ORDER_FIELD_COURSE_NOMEN_ID') . '</th><th>' . GetMessage('ORDER_FIELD_COURSE_NOMEN_TITLE') . '</th></tr>';
+					$valNomen = '<tr><th width="25%">' . GetMessage('ORDER_FIELD_COURSE_NOMEN_ID') . '</th><th>' . GetMessage('ORDER_FIELD_COURSE_NOMEN_TITLE') . '</th></tr>';
 					foreach ($newNomen as $num => $item) {
 						$valNomen .= '<tr><td>' . $item['NOMEN_ID'] . '</td>';
 						$valNomen .= '<td><a href="'.CComponentEngine::MakePathFromTemplate($arParams['PATH_TO_NOMEN_EDIT'], array('nomen_id' => $item['NOMEN_ID'])).'" target="_blank">' . $arNomen[$item['NOMEN_ID']]['TITLE'] . '</a></td></tr>';
@@ -777,7 +777,7 @@ while ($arEvent = $obRes->Fetch())
 				$oldTeacher = unserialize($arEvent['VALUE_OLD']);
 				$arEvent['VALUE_OLD'] = '';
 				if (count($oldTeacher) > 0) {
-					$valTeacher = '<tr><th>' . GetMessage('ORDER_FIELD_COURSE_TEACHER_ID') . '</th><th>' . GetMessage('ORDER_FIELD_COURSE_TEACHER_FULL_NAME') . '</th></tr>';
+					$valTeacher = '<tr><th width="25%">' . GetMessage('ORDER_FIELD_COURSE_TEACHER_ID') . '</th><th>' . GetMessage('ORDER_FIELD_COURSE_TEACHER_FULL_NAME') . '</th></tr>';
 					foreach ($oldTeacher as $num => $item) {
 						$valTeacher .= '<tr><td>' . $item['TEACHER_ID'] . '</td>';
 						$valTeacher .= '<td><a href="' . CComponentEngine::MakePathFromTemplate($arParams['PATH_TO_PHYSICAL_EDIT'], array('physical_id' => $item['TEACHER_ID'])) . '" target="_blank">' . $arPhysical[$item['TEACHER_ID']]['FULL_NAME'] . '</a></td></tr>';
@@ -788,7 +788,7 @@ while ($arEvent = $obRes->Fetch())
 				$newTeacher = unserialize($arEvent['VALUE_NEW']);
 				$arEvent['VALUE_NEW'] = '';
 				if (count($newTeacher) > 0) {
-					$valTeacher = '<tr><th>' . GetMessage('ORDER_FIELD_COURSE_TEACHER_ID') . '</th><th>' . GetMessage('ORDER_FIELD_COURSE_TEACHER_FULL_NAME') . '</th></tr>';
+					$valTeacher = '<tr><th width="25%">' . GetMessage('ORDER_FIELD_COURSE_TEACHER_ID') . '</th><th>' . GetMessage('ORDER_FIELD_COURSE_TEACHER_FULL_NAME') . '</th></tr>';
 					foreach ($newTeacher as $num => $item) {
 						$valTeacher .= '<tr><td>' . $item['TEACHER_ID'] . '</td>';
 						$valTeacher .= '<td><a href="' . CComponentEngine::MakePathFromTemplate($arParams['PATH_TO_PHYSICAL_EDIT'], array('physical_id' => $item['TEACHER_ID'])) . '" target="_blank">' . $arPhysical[$item['TEACHER_ID']]['FULL_NAME'] . '</a></td></tr>';

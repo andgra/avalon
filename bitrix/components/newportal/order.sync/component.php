@@ -100,6 +100,7 @@ $arResult =
 	);
 if($componentPage=='index') {
 	$arResult['ENTITY_TITLE']=COrderEntitySelectorHelper::PrepareEntityTitles();
+	unset($arResult['ENTITY_TITLE']['APP']);
 }
 
 $this->IncludeComponentTemplate($componentPage);

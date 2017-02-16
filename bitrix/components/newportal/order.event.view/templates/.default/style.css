@@ -40,12 +40,17 @@ table.bx-interface-grid table.bx-grid-sorting td.bx-sort-down {
 table.bx-interface-grid td {
 	padding:6px !important;
 }
-table.bx-interface-grid tr:not(.bx-grid-gutter):not(.bx-grid-head):not(.bx-grid-footer) td:not(.bx-actions-col) table,
+table.bx-interface-grid tr:not(.bx-grid-gutter):not(.bx-grid-head):not(.bx-grid-footer) td:not(.bx-actions-col) table {
+    border-spacing: 0;
+    width:100%;
+    border:1px solid #D9D9D9;
+
+}
 table.bx-interface-grid tr:not(.bx-grid-gutter):not(.bx-grid-head):not(.bx-grid-footer) td:not(.bx-actions-col) table th,
 table.bx-interface-grid tr:not(.bx-grid-gutter):not(.bx-grid-head):not(.bx-grid-footer) td:not(.bx-actions-col) table td
 {
-    border-spacing: 0;
 	border:1px solid #D9D9D9;
+    text-align: center;
 }
 
 .event-detail-files { /*overflow: hidden;*/ margin-top: 10px;}

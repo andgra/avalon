@@ -488,10 +488,12 @@ div.bx-popup-menu td.popupmenu div.popupitem td.gutter div.btn-copy { background
 	vertical-align:top;
 }
 
+
 .order-menu-item-active,
+.order-menu-item-selected,
 .order-menu-item:active,
 .order-menu-item-wrap:hover .order-menu-item {
-	background-color: #d6f1fb;
+	background-color: #d6f1fb !important;
 }
 
 .order-menu-item-wrap:hover .order-menu-icon {

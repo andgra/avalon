@@ -28,6 +28,7 @@ if(!empty($arParams["FILTER"])):
 endif;?>
 
 <?if($arParams["SHOW_FORM_TAG"]):?>
+</form>
 <form name="form_<?=$arParams["GRID_ID"]?>" action="" method="POST">
 <?=bitrix_sessid_post();?>
 <?endif?>

@@ -16,7 +16,9 @@ $contId="order_structure_container_".$id;
         <input type="hidden" class="order-structure-input-type" name="<?=$id?>_TYPE" value="">
         <input type="hidden" class="order-structure-input-value" name="<?=$id?>_VALUE" value="">
     </div>
-    <div class="order-structure-buttons-wrap"><a style="text-decoration: underline" href="javascript:void(0)" name="orderStructureSelect" onclick="obj.ShowForm({}); return false">Выбрать</a></div>
+    <?if(!$arResult['READONLY']):?>
+        <div class="order-structure-buttons-wrap"><a style="text-decoration: underline" href="javascript:void(0)" name="orderStructureSelect" onclick="obj.ShowForm({}); return false">Выбрать</a></div>
+    <?endif;?>
     <script>
         BX.ready(
             function()

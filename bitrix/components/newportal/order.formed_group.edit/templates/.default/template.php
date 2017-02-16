@@ -21,8 +21,8 @@ $APPLICATION->IncludeComponent('newportal:order.reg.list',
 	array(
 		'EXTERNAL_ID' => $arResult['ELEMENT']['ID']!=''?$arResult['ELEMENT']['ID']:false,
 		'EXTERNAL_TYPE' => 'FORMED_GROUP',
-		'FORM_ID' => $arResult['FORM_ID'],
-		'GRID_ID' => $arResult['GRID_ID'],
+		'FORM_ID' => $arResult['REG_FORM_ID'],
+		'GRID_ID' => $arResult['REG_GRID_ID'],
 		'TAB_ID' => $arResult['REG_TAB_ID'],
 		'EDIT' => $arResult['PERM_EDIT']
 	),
@@ -154,8 +154,22 @@ $APPLICATION->AddHeadScript('/bitrix/js/order/instant_editor.js');
 	BX.ready(
 		function()
 		{
-			var formID = 'form_' + '<?= $arResult['FORM_ID'] ?>';
-			var form = BX(formID);
+			BX('<?=$arResult["GRID_ID"];?>_apply').onclick=function(e) {
+				var mainForm = document.forms['form_'+'<?=$arResult["GRID_ID"];?>'];
+				var url=mainForm.action+'?';
+				var i;
+				/*for(i=0; i<mainForm.length; i++) {
+				 if(mainForm[i].type!='checkbox' || mainForm[i].checked)
+				 url+=mainForm[i].name+'='+mainForm[i].value+'&';
+				 }*/
+				var regForm = document.forms['form_'+'<?=$arResult["REG_GRID_ID"];?>'];
+				for(i=0; i<regForm.length; i++) {
+					if(regForm[i].type!='checkbox' || regForm[i].checked)
+						url+=regForm[i].name+'='+regForm[i].value+'&';
+				}
+				url=url.substr(0,url.length-1);
+				mainForm.action=url;
+			};
 		}
 	);
 </script>

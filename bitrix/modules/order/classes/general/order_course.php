@@ -33,6 +33,7 @@ class COrderCourse
         $modifyByJoin = ' LEFT JOIN (b_user U3 JOIN b_uts_user UF3 ON U3.ID=UF3.VALUE_ID) ON L.MODIFY_BY_ID = UF3.UF_GUID';
         $modifyByJoin .= ' LEFT JOIN b_order_physical UP3 ON UF3.UF_GUID=UP3.ID';
 		$prevCourseJoin = ' LEFT JOIN b_order_course PC ON PC.ID=L.PREV_COURSE';
+		$nextCourseJoin = ' LEFT JOIN b_order_course NC ON NC.PREV_COURSE=L.ID';
 
 		$result = array(
 			'ID' => array('FIELD' => 'L.ID', 'TYPE' => 'string'),
@@ -56,6 +57,8 @@ class COrderCourse
 			'DURATION' => array('FIELD' => 'L.DURATION', 'TYPE' => 'string'),
 			'PREV_COURSE' => array('FIELD' => 'L.PREV_COURSE', 'TYPE' => 'string'),
 			'PREV_COURSE_TITLE' => array('FIELD' => 'PC.TITLE', 'TYPE' => 'string', 'FROM' => $prevCourseJoin),
+			'NEXT_COURSE' => array('FIELD' => 'NC.ID', 'TYPE' => 'string'),
+			'NEXT_COURSE_TITLE' => array('FIELD' => 'NC.TITLE', 'TYPE' => 'string', 'FROM' => $nextCourseJoin),
 			'EXAM' => array('FIELD' => 'L.EXAM', 'TYPE' => 'string'),
 			'LITER' => array('FIELD' => 'L.LITER', 'TYPE' => 'string'),
 			'DOC' => array('FIELD' => 'L.DOC', 'TYPE' => 'string'),

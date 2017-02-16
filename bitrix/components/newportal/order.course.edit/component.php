@@ -325,7 +325,19 @@ $arResult['FIELDS']['tab_1'][] = array(
 	),
 	'persistent' => true
 );
-
+$arResult['FIELDS']['tab_1'][] = array(
+	'id' => 'NEXT_COURSE',
+	'name' => GetMessage('ORDER_FIELD_NEXT_COURSE'),
+	'type' => 'link',
+	'componentParams' => array(
+		'HREF' => CComponentEngine::makePathFromTemplate($arParams['PATH_TO_COURSE_EDIT'], array(
+			'course_id' => $arResult['ELEMENT']['NEXT_COURSE']
+		)),
+		'VALUE' => $arResult['ELEMENT']['NEXT_COURSE_TITLE'],
+		//'NAME_TEMPLATE' => \Bitrix\Crm\Format\PersonNameFormatter::getFormat()
+	),
+	'persistent' => true
+);
 $res=COrderNomen::GetListEx(array(),array(),false,false,array('ID','TITLE'));
 while($el=$res->Fetch()) {
 	$arResult["NOMEN_LIST"][$el['ID']]=$el;
@@ -340,7 +352,8 @@ $arResult['LITER']=unserialize($arResult['ELEMENT']['LITER']);
 $arResult['DOC']=unserialize($arResult['ELEMENT']['DOC']);
 $arResult['NOMEN']=unserialize($arResult['ELEMENT']['NOMEN']);
 $arResult['TEACHER']=unserialize($arResult['ELEMENT']['TEACHER']);
-$valExam='<tr><th>'.GetMessage('ORDER_COURSE_EXAM_TITLE').'</th><th>'.GetMessage('ORDER_COURSE_EXAM_MARK').'</th></tr>';
+$thead='<table class="order-edit-field-table">';
+$valExam='<tr><th>'.GetMessage('ORDER_COURSE_EXAM_TITLE').'</th><th width="30%">'.GetMessage('ORDER_COURSE_EXAM_MARK').'</th></tr>';
 foreach($arResult['EXAM'] as $num=>$item) {
 	$valExam.='<tr><td>'.$item['EXAM_TITLE'].'</td><td>'.$item['EXAM_MARK'].'</td></tr>';
 }
@@ -352,49 +365,50 @@ $valDoc='<tr><th>'.GetMessage('ORDER_COURSE_DOC_TITLE').'</th></tr>';
 foreach($arResult['DOC'] as $num=>$item) {
 	$valDoc.='<tr><td>'.$item['DOC_TITLE'].'</td></tr>';
 }
-$valNomen='<tr><th>'.GetMessage('ORDER_COURSE_NOMEN_ID').'</th><th>'.GetMessage('ORDER_COURSE_NOMEN_TITLE').'</th></tr>';
+$valNomen='<tr><th width="25%">'.GetMessage('ORDER_COURSE_NOMEN_ID').'</th><th>'.GetMessage('ORDER_COURSE_NOMEN_TITLE').'</th></tr>';
 foreach($arResult['NOMEN'] as $num=>$item) {
 	$valNomen.='<tr><td>'.$item['NOMEN_ID'].'</td>';
 	$valNomen.='<td><a href="/order/nomen/'.$item['NOMEN_ID'].'/">'.$arResult['NOMEN_LIST'][$item['NOMEN_ID']]['TITLE'].'</a></td></tr>';
 }
-$valTeacher='<tr><th>'.GetMessage('ORDER_COURSE_TEACHER_ID').'</th><th>'.GetMessage('ORDER_COURSE_TEACHER_FULL_NAME').'</th></tr>';
+$valTeacher='<tr><th width="25%">'.GetMessage('ORDER_COURSE_TEACHER_ID').'</th><th>'.GetMessage('ORDER_COURSE_TEACHER_FULL_NAME').'</th></tr>';
 foreach($arResult['TEACHER'] as $num=>$item) {
 	$valTeacher.='<tr><td>'.$item['TEACHER_ID'].'</td>';
 	$valTeacher.='<td><a href="/order/physical/'.$item['TEACHER_ID'].'/">'.$arResult['PHYSICAL_LIST'][$item['TEACHER_ID']]['FULL_NAME'].'</a></td></tr>';
 }
+$tfoot='</table>';
 $arResult['FIELDS']['tab_1'][] = array(
 	'id' => 'EXAM',
 	'name' => GetMessage('ORDER_FIELD_EXAM'),
 	'type' => 'custom',
-	'value' => '<table>'.$valExam.'</table>',
+	'value' => $thead.$valExam.$tfoot,
 	'persistent' => true
 );
 $arResult['FIELDS']['tab_1'][] = array(
 	'id' => 'LITER',
 	'name' => GetMessage('ORDER_FIELD_LITER'),
 	'type' => 'custom',
-	'value' => '<table>'.$valLiter.'</table>',
+	'value' => $thead.$valLiter.$tfoot,
 	'persistent' => true
 );
 $arResult['FIELDS']['tab_1'][] = array(
 	'id' => 'DOC',
 	'name' => GetMessage('ORDER_FIELD_DOC'),
 	'type' => 'custom',
-	'value' => '<table>'.$valDoc.'</table>',
+	'value' => $thead.$valDoc.$tfoot,
 	'persistent' => true
 );
 $arResult['FIELDS']['tab_1'][] = array(
 	'id' => 'NOMEN',
 	'name' => GetMessage('ORDER_FIELD_NOMEN'),
 	'type' => 'custom',
-	'value' => '<table>'.$valNomen.'</table>',
+	'value' => $thead.$valNomen.$tfoot,
 	'persistent' => true
 );
 $arResult['FIELDS']['tab_1'][] = array(
 	'id' => 'TEACHER',
 	'name' => GetMessage('ORDER_FIELD_TEACHER'),
 	'type' => 'custom',
-	'value' => '<table>'.$valTeacher.'</table>',
+	'value' => $thead.$valTeacher.$tfoot,
 	'persistent' => true
 );
 /*$icnt = count($arResult['FIELDS']['tab_1']);

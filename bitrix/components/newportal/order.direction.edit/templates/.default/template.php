@@ -13,6 +13,43 @@ $arTabs[] = array(
 	'fields'=> $arResult['FIELDS']['tab_1']
 );
 
+
+$arResult['DIRECTION_TAB_ID'] = 'tab_direction';
+$arResult['DIRECTION_EDITOR_ID'] = 'direction_' . strval($arParams['ELEMENT_ID']) . '_children';
+ob_start();
+$APPLICATION->IncludeComponent('newportal:order.direction.list',
+	'',
+	array(
+		'EXTERNAL_ID' => $arResult['ELEMENT']['ID']!=''?$arResult['ELEMENT']['ID']:false,
+		'EXTERNAL_TYPE' => 'DIRECTION',
+		'FORM_ID' => $arResult['FORM_ID'].'_CHILDREN_LIST',
+		'GRID_ID' => $arResult['GRID_ID'].'_CHILDREN_LIST',
+		'TAB_ID' => $arResult['DIRECTION_TAB_ID'],
+		'EDIT' => $arResult['PERM_EDIT']
+	),
+	false,
+	array('HIDE_ICONS' => 'Y', 'ACTIVE_COMPONENT' => 'Y')
+);
+$sChildrenHtml .= ob_get_contents();
+ob_end_clean();
+
+
+$arResult['FIELDS'][$arResult['DIRECTION_TAB_ID']][] = array(
+	'id' => 'DIRECTION_CHILDREN_ROWS',
+	'colspan' => true,
+	'type' => 'order_direction_list',
+	'value' => $sChildrenHtml
+);
+if (!empty($arResult['FIELDS'][$arResult['DIRECTION_TAB_ID']])) {
+	$arTabs[] = array(
+		'id' => $arResult['DIRECTION_TAB_ID'],
+		'name' => GetMessage('ORDER_TAB_CHILDREN_NAME'),
+		'title' => GetMessage('ORDER_TAB_CHILDREN_TITLE'),
+		'icon' => '',
+		'fields' => $arResult['FIELDS'][$arResult['DIRECTION_TAB_ID']]
+	);
+}
+
 $arResult['NOMEN_TAB_ID'] = 'tab_nomen';
 $arResult['NOMEN_EDITOR_ID'] = 'nomen_' . strval($arParams['ELEMENT_ID']) . '_nomens';
 ob_start();
@@ -21,8 +58,8 @@ $APPLICATION->IncludeComponent('newportal:order.nomen.list',
 	array(
 		'EXTERNAL_ID' => $arResult['ELEMENT']['ID']!=''?$arResult['ELEMENT']['ID']:false,
 		'EXTERNAL_TYPE' => 'DIRECTION',
-		'FORM_ID' => $arResult['FORM_ID'],
-		'GRID_ID' => $arResult['GRID_ID'],
+		'FORM_ID' => $arResult['FORM_ID'].'_NOMEN_LIST',
+		'GRID_ID' => $arResult['GRID_ID'].'_NOMEN_LIST',
 		'TAB_ID' => $arResult['NOMEN_TAB_ID'],
 		'EDIT' => $arResult['PERM_EDIT']
 	),
@@ -110,7 +147,7 @@ $elementID = isset($arResult['ELEMENT']['ID']) ? $arResult['ELEMENT']['ID'] : ''
 
 $arResult['ORDER_CUSTOM_PAGE_TITLE'] =
 	$elementID !=''
-	? GetMessage('ORDER_DIRECTION_EDIT_TITLE',
+	? GetMessage('ORDER_DIRECTION_EDIT_PAGE_TITLE',
 		array(
 			'#ID#' => $elementID,
 			'#TITLE#' => isset($arResult['ELEMENT']['TITLE']) ? $arResult['ELEMENT']['TITLE'] : ''
@@ -120,7 +157,6 @@ $arResult['ORDER_CUSTOM_PAGE_TITLE'] =
 /*
 */
 $formCustomHtml = '<input type="hidden" name="direction_id" value="'.$elementID.'"/>'.$arResult['FORM_CUSTOM_HTML'];
-
 
 $APPLICATION->IncludeComponent(
 	'newportal:order.interface.form.tactile',

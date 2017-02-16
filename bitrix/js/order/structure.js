@@ -433,6 +433,7 @@ if (!obOrder)
             this.list[this.obSelected['type']]={};
             this.list[this.obSelected['type']][this.obSelected['value']]={};
             this.list[this.obSelected['type']][this.obSelected['value']]['TITLE']=this.obSelected['title'];
+            this.list[this.obSelected['type']][this.obSelected['value']]['URL']=this.obSelected['url'];
         }
 
         if(this.obSelected['value'] && this.obSelected['type']) {
@@ -454,12 +455,13 @@ if (!obOrder)
             BX.cleanNode(spanTitle);
             if(!this.params['selectable'] || this.params['selectable'].length>1)
                 spanTitle.appendChild(document.createTextNode(BX.message('js_order_structure_title_' + this.obSelected['type']) + " | "));
-
+            console.log(this.list);
+            console.log(this.obSelected);
             spanTitle.appendChild(BX.create(
                 'a',
                 {
                     props: {
-                        href: BX.message('js_order_structure_path_to_' + this.obSelected['type']).replace('#' + this.obSelected['type'] + '_id#', this.obSelected['value']),
+                        href: this.list[this.obSelected['type']][this.obSelected['value']]['URL'],
                         target: '_blank'
                     },
                     text: this.list[this.obSelected['type']][this.obSelected['value']]['TITLE']

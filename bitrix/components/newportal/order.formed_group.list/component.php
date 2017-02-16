@@ -195,9 +195,10 @@ if(!$bInternal || strtoupper($arResult['EXTERNAL_TYPE'])!='GROUP') {
     }
 }
 
-$arResult['SORT_VARS']=array('by'=>'by','order'=>'order');
-if(isset($_REQUEST['by']) && isset($_REQUEST['order'])) {
-    $arResult['SORT']=array($_REQUEST['by']=>$_REQUEST['order']);
+$sortPrefix=($bInternal?$arResult['GRID_ID']:"");
+$arResult['SORT_VARS']=array('by'=>$sortPrefix.'by','order'=>$sortPrefix.'order');
+if(isset($_REQUEST[$sortPrefix.'by']) && isset($_REQUEST[$sortPrefix.'order'])) {
+    $arResult['SORT']=array($_REQUEST[$sortPrefix.'by'] => $_REQUEST[$sortPrefix.'order']);
 }
 else {
     $arResult['SORT'] = array('GROUP_TITLE' => 'asc');

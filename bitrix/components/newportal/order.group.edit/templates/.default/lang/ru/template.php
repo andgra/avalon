@@ -1,7 +1,7 @@
 <?
 $MESS["ORDER_TAB_1"] = "Основная";
 $MESS["ORDER_TAB_1_TITLE"] = "Основная информация";
-$MESS["ORDER_GROUP_EDIT_TITLE"] = "Группа ##ID# &mdash; #TITLE#";
+$MESS["ORDER_GROUP_EDIT_PAGE_TITLE"] = "Группа ##ID# &mdash; #TITLE#";
 $MESS["ORDER_GROUP_CREATE_TITLE"] = "Новая группа";
 $MESS["ORDER_TAB_HISTORY_NAME"] = "История";
 $MESS["ORDER_TAB_HISTORY_TITLE"] = "История изменений";

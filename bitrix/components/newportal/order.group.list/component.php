@@ -162,9 +162,10 @@ if(!$bInternal || $arResult['EXTERNAL_TYPE']!='NOMEN') {
     $arResult['HEADERS'][]=array('id' => 'NOMEN_ID', 'name' => GetMessage('ORDER_COLUMN_NOMEN_ID'), 'default' => true, 'sort' => 'NOMEN_TITLE', 'editable' => false);
 }
 
-$arResult['SORT_VARS']=array('by'=>'by','order'=>'order');
-if(isset($_REQUEST['by']) && isset($_REQUEST['order'])) {
-    $arResult['SORT']=array($_REQUEST['by']=>$_REQUEST['order']);
+$sortPrefix=($bInternal?$arResult['GRID_ID']:"");
+$arResult['SORT_VARS']=array('by'=>$sortPrefix.'by','order'=>$sortPrefix.'order');
+if(isset($_REQUEST[$sortPrefix.'by']) && isset($_REQUEST[$sortPrefix.'order'])) {
+    $arResult['SORT']=array($_REQUEST[$sortPrefix.'by'] => $_REQUEST[$sortPrefix.'order']);
 }
 else {
     $arResult['SORT'] = array('TITLE' => 'asc');

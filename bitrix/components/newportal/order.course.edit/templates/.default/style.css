@@ -23,3 +23,17 @@ table#tab_bizproc_edit_table tr:nth-of-type(3) td {
 	position: relative;
 	left: -4px;
 }
+
+.order-edit-field-table {
+	border-spacing: 0;
+	border:1px solid #D9D9D9;
+	width:100%;
+}
+.order-edit-field-table th,
+.order-edit-field-table td{
+	border-spacing: 0;
+	border:1px solid #D9D9D9;
+	text-align: center;
+	padding: 5px;
+	background-color: white;
+}

@@ -365,6 +365,9 @@ function BxInterfaceGrid(table_id)
 	this.IsActionEnabled = function(action)
 	{
 		var form = document.forms['form_'+this.table_id];
+		console.dir(form);
+		console.dir(document.forms);
+		console.dir(this);
 		if(!form) return;
 
 		var bChecked = false;

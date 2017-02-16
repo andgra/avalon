@@ -48,11 +48,6 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
                     });
 
                 }
-
-                <?if($arResult['INTERNAL']):?>
-                    var input=BX.findChild(BX('bx_grid_<?=$arResult['GRID_ID']?>_action_buttons'),{name:'save'});
-                    input.style.display='none';
-                <?endif;?>
             }
         );
     </script>

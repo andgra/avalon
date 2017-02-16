@@ -21,8 +21,8 @@ $APPLICATION->IncludeComponent('newportal:order.formed_group.list',
 	array(
 		'EXTERNAL_ID' => $arResult['ELEMENT']['ID']!=''?$arResult['ELEMENT']['ID']:false,
 		'EXTERNAL_TYPE' => 'GROUP',
-		'FORM_ID' => $arResult['FORM_ID'],
-		'GRID_ID' => $arResult['GRID_ID'],
+		'FORM_ID' => $arResult['FORM_ID'].'_FORMED_GROUP_LIST',
+		'GRID_ID' => $arResult['GRID_ID'].'_FORMED_GROUP_LIST',
 		'TAB_ID' => $arResult['FORMED_GROUP_TAB_ID'],
 		'EDIT' => $arResult['PERM_EDIT']
 	),
@@ -109,7 +109,7 @@ $elementID = isset($arResult['ELEMENT']['ID']) ? $arResult['ELEMENT']['ID'] : ''
 
 $arResult['ORDER_CUSTOM_PAGE_TITLE'] =
 	$elementID !=''
-	? GetMessage('ORDER_GROUP_EDIT_TITLE',
+	? GetMessage('ORDER_GROUP_EDIT_PAGE_TITLE',
 		array(
 			'#ID#' => $elementID,
 			'#TITLE#' => isset($arResult['ELEMENT']['TITLE']) ? $arResult['ELEMENT']['TITLE'] : ''

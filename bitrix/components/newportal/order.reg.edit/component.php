@@ -167,18 +167,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && check_bitrix_sessid())
 			$arFields['STATUS'] = $arSrcElement['STATUS'];
 		}
 
-		if(isset($_POST['ORDER_REG_EDIT_V12_CHANGE_BTN_ENTITY_ID']))
+		if(isset($_POST['ENTITY_ID_VALUE']))
 		{
-			$arFields['ENTITY_ID'] = $_POST['ORDER_REG_EDIT_V12_CHANGE_BTN_ENTITY_ID'];
+			$arFields['ENTITY_ID'] = $_POST['ENTITY_ID_VALUE'];
 		}
 		elseif(isset($arSrcElement['ENTITY_ID']))
 		{
 			$arFields['ENTITY_ID'] = $arSrcElement['ENTITY_ID'];
 		}
 
-		if(isset($_POST['ORDER_REG_EDIT_V12_CHANGE_BTN_ENTITY_ID_ENTITY_TYPE']))
+		if(isset($_POST['ENTITY_ID_TYPE']))
 		{
-			$arFields['ENTITY_TYPE'] = strtoupper($_POST['ORDER_REG_EDIT_V12_CHANGE_BTN_ENTITY_ID_ENTITY_TYPE']);
+			$arFields['ENTITY_TYPE'] = strtoupper($_POST['ENTITY_ID_TYPE']);
 		}
 		elseif(isset($arSrcElement['ENTITY_TYPE']))
 		{
@@ -342,62 +342,41 @@ else {
 	);
 }
 
-
-if($arResult['ELEMENT']['SHARED']=='Y' || $onlyRead) {
-	$arResult['FIELDS']['tab_1'][] = array(
-		'id' => 'PHYSICAL_ID',
-		'name' => GetMessage('ORDER_FIELD_PHYSICAL_ID'),
-		'type' => 'link',
-		'componentParams' => array(
-			'HREF' => CComponentEngine::makePathFromTemplate($arParams['PATH_TO_PHYSICAL_EDIT'],array(
-				'physical_id' => $arResult['ELEMENT']['PHYSICAL_ID']
-			)),
-			'VALUE' => $arResult['ELEMENT']['PHYSICAL_FULL_NAME'],
-			//'NAME_TEMPLATE' => \Bitrix\Crm\Format\PersonNameFormatter::getFormat()
+$arResult['FIELDS']['tab_1'][] = array(
+	'id' => 'PHYSICAL_ID',
+	'name' => GetMessage('ORDER_FIELD_PHYSICAL_ID'),
+	'type' => 'order_person_selector',
+	'componentParams' => array(
+		'TYPE' => 'physical',
+		'ID' => 'PHYSICAL_ID',
+		'SELECTED' => array(
+			'ID' => $arResult['ELEMENT']['PHYSICAL_ID'],
+			'FULL_NAME' => $arResult['ELEMENT']['PHYSICAL_FULL_NAME'],
+			'PHONE' => $arResult['ELEMENT']['PHYSICAL_PHONE'],
+			'EMAIL' => $arResult['ELEMENT']['PHYSICAL_EMAIL'],
 		),
-		//'params' => array('readonly'=>"readonly"),
-		'persistent' => true
-	);
-}
-else {
-	if($arResult['ELEMENT']['ID']!='' && $arResult['ELEMENT']['PHYSICAL_ID']!=='') {
-		$arResult['FIELDS']['tab_1'][] = array(
-			'id' => 'PHYSICAL_ID',
-			'name' => GetMessage('ORDER_FIELD_PHYSICAL_ID'),
-			'type' => 'order_entity_selector',
-			'componentParams' => array(
-				'ENTITY_TYPE' => 'PHYSICAL',
-				'INPUT_NAME' => 'PHYSICAL_ID',
-				'INPUT_VALUE' => isset($arResult['ELEMENT']['PHYSICAL_ID']) ? $arResult['ELEMENT']['PHYSICAL_ID'] : '',
-				'FORM_NAME' => $arResult['FORM_ID'],
-				'MULTIPLE' => 'N',
-				//'NAME_TEMPLATE' => \Bitrix\Crm\Format\PersonNameFormatter::getFormat()
-			),
-			'persistent' => true
-		);
-	}
-	else {
-		$arResult['FIELDS']['tab_1'][] = array(
-			'id' => 'PHYSICAL_ID',
-			'name' => GetMessage('ORDER_FIELD_PHYSICAL_ID'),
-			'type' => 'order_entity_add',
-			'componentParams' => array(
-				'ENTITY_TYPE' => 'PHYSICAL',
-				'INPUT_NAME' => 'PHYSICAL_ID',
-				'NEW_INPUT_NAME' => 'NEW_PHYSICAL_ID',
-				'INPUT_VALUE' => array(
-					'FULL_NAME'=>$arResult['ELEMENT']['PHYSICAL_FULL_NAME'],
-				),
-				'FORM_NAME' => $arResult['FORM_ID'],
-				'MULTIPLE' => 'N',
-				//'NAME_TEMPLATE' => \Bitrix\Crm\Format\PersonNameFormatter::getFormat()
-			),
-			'persistent' => true
-		);
-	}
-}
+		'READONLY'=>$arResult['ELEMENT']['SHARED']=='Y' || $onlyRead
+	),
+	'persistent' => true
+);
 
-if($arResult['ELEMENT']['SHARED']=='Y' || $onlyRead) {
+$arResult['FIELDS']['tab_1'][] = array(
+	'id' => 'ENTITY_ID',
+	'name' => GetMessage('ORDER_FIELD_ENTITY_ID'),
+	'type' => 'order_structure_selector',
+	'componentParams' => array(
+		'ID' => 'ENTITY_ID',
+		'SELECTED' => array(
+			'TYPE'=>$arResult['ELEMENT']['ENTITY_TYPE'],
+			'VALUE'=>$arResult['ELEMENT']['ENTITY_ID'],
+			'TITLE'=>$arResult['ELEMENT']['ENTITY_TITLE']
+		),
+		'READONLY'=>$arResult['ELEMENT']['SHARED']=='Y' || $onlyRead
+	),
+	'persistent' => true
+);
+
+/*if($arResult['ELEMENT']['SHARED']=='Y' || $onlyRead) {
 	$arResult['FIELDS']['tab_1'][] = array(
 		'id' => 'ENTITY_ID',
 		'name' => GetMessage('ORDER_FIELD_ENTITY_ID'),
@@ -430,7 +409,7 @@ else {
 		),
 		'persistent' => true
 	);
-}
+}*/
 
 $arResult['FIELDS']['tab_1'][] = array(
 	'id' => 'PAST',

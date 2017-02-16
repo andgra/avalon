@@ -22,8 +22,8 @@ $APPLICATION->IncludeComponent('newportal:order.group.list',
 	array(
 		'EXTERNAL_ID' => $arResult['ELEMENT']['ID']!=''?$arResult['ELEMENT']['ID']:false,
 		'EXTERNAL_TYPE' => 'NOMEN',
-		'FORM_ID' => $arResult['FORM_ID'],
-		'GRID_ID' => $arResult['GRID_ID'],
+		'FORM_ID' => $arResult['FORM_ID'].'_GROUP_LIST',
+		'GRID_ID' => $arResult['GRID_ID'].'_GROUP_LIST',
 		'TAB_ID' => $arResult['GROUP_TAB_ID'],
 		'EDIT' => $arResult['PERM_EDIT']
 	),
@@ -58,8 +58,8 @@ $APPLICATION->IncludeComponent('newportal:order.formed_group.list',
 	array(
 		'EXTERNAL_ID' => $arResult['ELEMENT']['ID']!=''?$arResult['ELEMENT']['ID']:false,
 		'EXTERNAL_TYPE' => 'NOMEN',
-		'FORM_ID' => $arResult['FORM_ID'],
-		'GRID_ID' => $arResult['GRID_ID'],
+		'FORM_ID' => $arResult['FORM_ID'].'_FORMED_GROUP_LIST',
+		'GRID_ID' => $arResult['GRID_ID'].'_FORMED_GROUP_LIST',
 		'TAB_ID' => $arResult['FORMED_GROUP_TAB_ID'],
 		'EDIT' => $arResult['PERM_EDIT']
 	),

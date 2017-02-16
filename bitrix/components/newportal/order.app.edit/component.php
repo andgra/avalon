@@ -6,18 +6,19 @@ if (!CModule::IncludeModule('order')) {
     return;
 }
 
+CJSCore::Init(array('access', 'window','jquery'));
 //CModule::IncludeModule('fileman');
 if (!function_exists('ProcessRegs')) {
     function ProcessRegs($appID,$gridID)
     {
-        if (isset($_POST['FIELDS']) && is_array($_POST['FIELDS'])) {
+        if (isset($_REQUEST['FIELDS']) && is_array($_REQUEST['FIELDS'])) {
             $COrderReg = new COrderReg();
-            foreach ($_POST['FIELDS'] as $regID => $regFields) {
-                if (isset($_POST['ORDER_PERSON_PHYSICAL_ID_' . $regID . '_VALUE'])) {
-                    $regFields['PHYSICAL_ID'] = $_POST['ORDER_PERSON_PHYSICAL_ID_' . $regID . '_VALUE'];
-                    $regFields['ENTITY_ID'] = $_POST['ORDER_STRUCTURE_ENTITY_ID_' . $regID . '_VALUE'];
-                    $regFields['ENTITY_TYPE'] = strtolower($_POST['ORDER_STRUCTURE_ENTITY_ID_' . $regID . '_TYPE']);
-                    if (isset($_POST[$regID . '_FLAG']) && $_POST[$regID . '_FLAG'] == 'NEW') {
+            foreach ($_REQUEST['FIELDS'] as $regID => $regFields) {
+                if (isset($_REQUEST['ORDER_PERSON_PHYSICAL_ID_' . $regID . '_VALUE'])) {
+                    $regFields['PHYSICAL_ID'] = $_REQUEST['ORDER_PERSON_PHYSICAL_ID_' . $regID . '_VALUE'];
+                    $regFields['ENTITY_ID'] = $_REQUEST['ORDER_STRUCTURE_ENTITY_ID_' . $regID . '_VALUE'];
+                    $regFields['ENTITY_TYPE'] = strtolower($_REQUEST['ORDER_STRUCTURE_ENTITY_ID_' . $regID . '_TYPE']);
+                    if (isset($_REQUEST[$regID . '_FLAG']) && $_REQUEST[$regID . '_FLAG'] == 'NEW') {
                         $regFields['ID'] = COrderHelper::GetNewID();
                         $regFields['SHARED'] = 'N';
                         $regFields['APP_ID'] = $appID;
@@ -139,6 +140,8 @@ unset($arFields);
 
 $arResult['FORM_ID'] = !empty($arParams['FORM_ID']) ? $arParams['FORM_ID'] : 'ORDER_APP_EDIT_V12';
 $arResult['GRID_ID'] = 'ORDER_APP_EDIT_V12';
+$arResult['REG_FORM_ID'] = $arResult['FORM_ID'].'_REG_LIST';
+$arResult['REG_GRID_ID'] = $arResult['GRID_ID'].'_REG_LIST';
 
 
 do {
@@ -146,7 +149,7 @@ do {
         $bVarsFromForm = true;
         $DB->StartTransaction();
         if (isset($_POST['save']) || isset($_POST['saveAndView']) || isset($_POST['saveAndAdd']) || isset($_POST['apply'])
-            || $_REQUEST['action_button_' . $arResult['GRID_ID']] == 'delete') {
+            || $_REQUEST['action_button_' . $arResult['REG_GRID_ID']] == 'delete') {
             $arSrcElement = ($bEdit || $bRead) ? $arResult['ELEMENT'] : array();
 
 
@@ -226,7 +229,7 @@ do {
 
             $ID = isset($arResult['ELEMENT']['ID']) ? $arResult['ELEMENT']['ID'] : '';
             if ($ID != '') {
-                if(!ProcessRegs($ID,$arResult['GRID_ID'])) {
+                if(!ProcessRegs($ID,$arResult['REG_GRID_ID'])) {
                     $DB->Rollback();
                     break;
                 }
@@ -236,16 +239,16 @@ do {
                     break;
                 }
             } else {
-                if (isset($_POST['ORDER_APP_EDIT_V12_CHANGE_BTN_REG_ID'])) {
+                /*if (isset($_POST['ORDER_APP_EDIT_V12_CHANGE_BTN_REG_ID'])) {
                     $arFields['REG_ID'] = $_POST['ORDER_APP_EDIT_V12_CHANGE_BTN_REG_ID'];
                 } elseif (isset($arSrcElement['REG_ID'])) {
                     $arFields['REG_ID'] = $arSrcElement['REG_ID'];
-                }
+                }*/
 
 
                 $arFields['ID'] = COrderHelper::GetNewID();
                 $ID=$arFields['ID'];
-                if(!ProcessRegs($ID,$arResult['GRID_ID'])) {
+                if(!ProcessRegs($ID,$arResult['REG_GRID_ID'])) {
                     $DB->Rollback();
                     break;
                 }
@@ -262,7 +265,7 @@ do {
 
             $DB->Commit();
             if (isset($_POST['apply']) || isset($_POST['saveAndView'])
-                || $_REQUEST['action_button_' . $arResult['GRID_ID']] == 'delete') {
+                || $_REQUEST['action_button_' . $arResult['REG_GRID_ID']] == 'delete') {
                 LocalRedirect(
                     CComponentEngine::MakePathFromTemplate(
                         $arParams['PATH_TO_APP_EDIT'],
@@ -355,44 +358,30 @@ if ($arResult['ELEMENT']['ID'] != '') {
         'persistent' => true
     );
 }
-if (!$onlyRead) {
-    $arResult['FIELDS']['tab_1'][] = array(
-        'id' => 'AGENT_ID',
-        'name' => GetMessage('ORDER_FIELD_AGENT_ID'),
-        'type' => 'order_person_selector',
-        'componentParams' => array(
-            'TYPE' => 'agent',
-            'ID' => 'AGENT_ID',
-            'SELECTED' => array(
-                'ID' => $arResult['ELEMENT']['AGENT_ID'],
-                'LEGAL' => $arResult['ELEMENT']['AGENT_LEGAL'],
-                'TITLE' => $arResult['ELEMENT']['AGENT_TITLE'],
-                'PHONE' => $arResult['ELEMENT']['AGENT_PHONE'],
-                'EMAIL' => $arResult['ELEMENT']['AGENT_EMAIL'],
-                'CONTACT_ID' => $arResult['ELEMENT']['CONTACT_ID'],
-                'CONTACT_FULL_NAME' => $arResult['ELEMENT']['CONTACT_FULL_NAME'],
-                'CONTACT_PHONE' => $arResult['ELEMENT']['CONTACT_PHONE'],
-                'CONTACT_EMAIL' => $arResult['ELEMENT']['CONTACT_EMAIL'],
-            ),
+
+
+$arResult['FIELDS']['tab_1'][] = array(
+    'id' => 'AGENT_ID',
+    'name' => GetMessage('ORDER_FIELD_AGENT_ID'),
+    'type' => 'order_person_selector',
+    'componentParams' => array(
+        'TYPE' => 'agent',
+        'ID' => 'AGENT_ID',
+        'SELECTED' => array(
+            'ID' => $arResult['ELEMENT']['AGENT_ID'],
+            'LEGAL' => $arResult['ELEMENT']['AGENT_LEGAL'],
+            'TITLE' => $arResult['ELEMENT']['AGENT_TITLE'],
+            'PHONE' => $arResult['ELEMENT']['AGENT_PHONE'],
+            'EMAIL' => $arResult['ELEMENT']['AGENT_EMAIL'],
+            'CONTACT_ID' => $arResult['ELEMENT']['CONTACT_ID'],
+            'CONTACT_FULL_NAME' => $arResult['ELEMENT']['CONTACT_FULL_NAME'],
+            'CONTACT_PHONE' => $arResult['ELEMENT']['CONTACT_PHONE'],
+            'CONTACT_EMAIL' => $arResult['ELEMENT']['CONTACT_EMAIL'],
         ),
-        'persistent' => true
-    );
-} else {
-    $arResult['FIELDS']['tab_1'][] = array(
-        'id' => 'AGENT_ID',
-        'name' => GetMessage('ORDER_FIELD_AGENT_ID'),
-        'type' => 'link',
-        'componentParams' => array(
-            'HREF' => CComponentEngine::makePathFromTemplate($arParams['PATH_TO_AGENT_EDIT'], array(
-                'agent_id' => $arResult['ELEMENT']['AGENT_ID']
-            )),
-            'VALUE' => $arResult['ELEMENT']['AGENT_TITLE'],
-            //'NAME_TEMPLATE' => \Bitrix\Crm\Format\PersonNameFormatter::getFormat()
-        ),
-        //'params' => array('readonly'=>"readonly"),
-        'persistent' => true
-    );
-}
+        'READONLY'=>$onlyRead,
+    ),
+    'persistent' => true
+);
 
 $arResult['FIELDS']['tab_1'][] = array(
     'id' => 'AGENT_PHONE',

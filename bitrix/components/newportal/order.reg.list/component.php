@@ -200,14 +200,8 @@ $defaultPhysical = COrderEntitySelectorHelper::GetPersonSelector(
 
 $arResult['HEADERS'] = array(
     array('id' => 'ID', 'name' => GetMessage('ORDER_COLUMN_ID'), 'default' => true, 'sort' => 'ID', 'editable' => false),
-    array('id' => 'PHYSICAL_ID', 'name' => GetMessage('ORDER_COLUMN_PHYSICAL'), 'default' => true, 'sort' => 'PHYSICAL_FULL_NAME', 'editable' => array('default_value'=>$defaultPhysical),'type'=>'person_selector'),
-    array('id' => 'PAST', 'name' => GetMessage('ORDER_COLUMN_PAST'), 'default' => true, 'sort' => 'PAST', 'editable' => true, 'type' => 'checkbox'),
-    array('id' => 'STATUS', 'name' => GetMessage('ORDER_COLUMN_STATUS'), 'default' => true, 'sort' => 'STATUS_TITLE', 'editable' => array('items' => $arResult['STATUS_LIST_WRITE'],'default_value'=>'NEW'), 'type' => 'list'),
-    array('id' => 'PERIOD', 'name' => GetMessage('ORDER_COLUMN_PERIOD'), 'default' => true, 'sort' => 'PERIOD', 'editable' => array('default_value'=>date('d.m.Y', mktime(0, 0, 0, date("m"), date("d") + 1, date("Y")))), 'type' => 'date'),
-    array('id' => 'DESCRIPTION', 'name' => GetMessage('ORDER_COLUMN_DESCRIPTION'), 'default' => true, 'sort' => 'DESCRIPTION', 'editable' => true,'type'=>'textarea'),
-    array('id' => 'MODIFY_DATE', 'name' => GetMessage('ORDER_COLUMN_MODIFY_DATE'), 'default' => true, 'sort' => 'MODIFY_DATE', 'editable' => false, 'type' => 'date'),
-    array('id' => 'MODIFY_BY_ID', 'name' => GetMessage('ORDER_COLUMN_MODIFY_BY_ID'), 'default' => true, 'sort' => 'MODIFY_BY_FULL_NAME', 'editable' => false),
 );
+
 
 if(!$bInternal || strtoupper($arResult['EXTERNAL_TYPE'])!='APP') {
     $defaultApp=COrderEntitySelectorHelper::GetSelector(
@@ -224,6 +218,11 @@ if(!$bInternal || strtoupper($arResult['EXTERNAL_TYPE'])!='APP') {
         array('id' => 'ASSIGNED_ID', 'name' => GetMessage('ORDER_COLUMN_ASSIGNED'), 'default' => true, 'sort' => 'ASSIGNED_FULL_NAME', 'editable' => false),
     ));
 }
+
+$arResult['HEADERS']=array_merge($arResult['HEADERS'],array(
+    array('id' => 'PHYSICAL_ID', 'name' => GetMessage('ORDER_COLUMN_PHYSICAL'), 'default' => true, 'sort' => 'PHYSICAL_FULL_NAME', 'editable' => array('default_value'=>$defaultPhysical),'type'=>'person_selector'),
+));
+
 if(!$bInternal || strtoupper($arResult['EXTERNAL_TYPE'])!='FORMED_GROUP') {
     $defaultEntity=COrderEntitySelectorHelper::GetStructureSelector(
         'ENTITY_ID_NEW_%ID%',
@@ -234,15 +233,41 @@ if(!$bInternal || strtoupper($arResult['EXTERNAL_TYPE'])!='FORMED_GROUP') {
         array('id' => 'ENTITY_ID', 'name' => GetMessage('ORDER_COLUMN_ENTITY'), 'default' => true, 'sort' => 'ENTITY_TITLE', 'editable' => array('default_value'=>$defaultEntity),'type'=>'structure_selector'),
     ));
 }
+$arResult['HEADERS']=array_merge($arResult['HEADERS'],array(
+    array('id' => 'PAST', 'name' => GetMessage('ORDER_COLUMN_PAST'), 'default' => true, 'sort' => 'PAST', 'editable' => true, 'type' => 'checkbox'),
+    array('id' => 'STATUS', 'name' => GetMessage('ORDER_COLUMN_STATUS'), 'default' => true, 'sort' => 'STATUS_TITLE', 'editable' => array('items' => $arResult['STATUS_LIST_WRITE'],'default_value'=>'NEW'), 'type' => 'list'),
+    array('id' => 'PERIOD', 'name' => GetMessage('ORDER_COLUMN_PERIOD'), 'default' => true, 'sort' => 'PERIOD', 'editable' => array('default_value'=>date('d.m.Y', mktime(0, 0, 0, date("m"), date("d") + 1, date("Y")))), 'type' => 'date'),
+    array('id' => 'DESCRIPTION', 'name' => GetMessage('ORDER_COLUMN_DESCRIPTION'), 'default' => true, 'sort' => 'DESCRIPTION', 'editable' => true,'type'=>'textarea'),
+    array('id' => 'MODIFY_DATE', 'name' => GetMessage('ORDER_COLUMN_MODIFY_DATE'), 'default' => true, 'sort' => 'MODIFY_DATE', 'editable' => false, 'type' => 'date'),
+    array('id' => 'MODIFY_BY_ID', 'name' => GetMessage('ORDER_COLUMN_MODIFY_BY_ID'), 'default' => true, 'sort' => 'MODIFY_BY_FULL_NAME', 'editable' => false),
+));
+
+if(!$bInternal || strtoupper($arResult['EXTERNAL_TYPE'])!='APP') {
+    $defaultApp=COrderEntitySelectorHelper::GetSelector(
+        'APP',
+        array(
+            'INPUT_NAME'=>'APP_ID_NEW_%ID%',
+            'FORM_ID'=>$arResult['GRID_ID'],
+            'FILTER'=>array('!STATUS'=>array('CONVERTED','DENIED'))
+        )
+    );
+
+    $arResult['HEADERS']=array_merge($arResult['HEADERS'],array(
+        array('id' => 'APP_ID', 'name' => GetMessage('ORDER_COLUMN_APP_ID'), 'default' => true, 'sort' => 'APP_ID', 'editable' => array('default_value'=>array('ADD_ONLY'=>'Y','VALUE'=>$defaultApp)),'type'=>'custom'),
+        array('id' => 'ASSIGNED_ID', 'name' => GetMessage('ORDER_COLUMN_ASSIGNED'), 'default' => true, 'sort' => 'ASSIGNED_FULL_NAME', 'editable' => false),
+    ));
+}
+
 if(!$bInternal) {
     $arResult['HEADERS']=array_merge($arResult['HEADERS'],array(
         array('id' => 'SHARED', 'name' => GetMessage('ORDER_COLUMN_SHARED'), 'default' => true, 'sort' => 'ID', 'editable' => false, 'type' => 'checkbox'),
     ));
 }
 
-$arResult['SORT_VARS']=array('by'=>'by','order'=>'order');
-if(isset($_REQUEST['by']) && isset($_REQUEST['order'])) {
-    $arResult['SORT']=array($_REQUEST['by']=>$_REQUEST['order']);
+$sortPrefix=($bInternal?$arResult['GRID_ID']:"");
+$arResult['SORT_VARS']=array('by'=>$sortPrefix.'by','order'=>$sortPrefix.'order');
+if(isset($_REQUEST[$sortPrefix.'by']) && isset($_REQUEST[$sortPrefix.'order'])) {
+    $arResult['SORT']=array($_REQUEST[$sortPrefix.'by'] => $_REQUEST[$sortPrefix.'order']);
 }
 else {
     $arResult['SORT'] = array('MODIFY_DATE' => 'desc');

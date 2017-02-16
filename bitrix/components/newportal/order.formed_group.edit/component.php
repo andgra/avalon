@@ -11,15 +11,14 @@ if (!CModule::IncludeModule('order'))
 if (!function_exists('ProcessRegs')) {
 	function ProcessRegs($formedGroupID,$gridID)
 	{
-		global $_POST;
-		if (isset($_POST['FIELDS']) && is_array($_POST['FIELDS'])) {
+		if (isset($_REQUEST['FIELDS']) && is_array($_REQUEST['FIELDS'])) {
 			$COrderReg = new COrderReg();
-			foreach ($_POST['FIELDS'] as $regID => $regFields) {
-				if (isset($_POST['ORDER_PERSON_PHYSICAL_ID_' . $regID . '_VALUE'])) {
-					$regFields['PHYSICAL_ID'] = $_POST['ORDER_PERSON_PHYSICAL_ID_' . $regID . '_VALUE'];
-					if (isset($_POST[$regID . '_FLAG']) && $_POST[$regID . '_FLAG'] == 'NEW') {
+			foreach ($_REQUEST['FIELDS'] as $regID => $regFields) {
+				if (isset($_REQUEST['ORDER_PERSON_PHYSICAL_ID_' . $regID . '_VALUE'])) {
+					$regFields['PHYSICAL_ID'] = $_REQUEST['ORDER_PERSON_PHYSICAL_ID_' . $regID . '_VALUE'];
+					if (isset($_REQUEST[$regID . '_FLAG']) && $_REQUEST[$regID . '_FLAG'] == 'NEW') {
 						$regFields['ID'] = COrderHelper::GetNewID();
-						$regFields['APP_ID'] = $_POST[$gridID.'_CHANGE_BTN_APP_ID_' . $regID];
+						$regFields['APP_ID'] = $_REQUEST[$gridID.'_CHANGE_BTN_APP_ID_' . $regID];
 						$regFields['SHARED'] = 'N';
 						$regFields['ENTITY_ID'] = $formedGroupID;
 						$regFields['ENTITY_TYPE'] = 'formed_group';
@@ -36,9 +35,9 @@ if (!function_exists('ProcessRegs')) {
 
 				}
 			}
-		} elseif ($_POST['action_button_' . $gridID] == 'delete') {
+		} elseif ($_REQUEST['action_button_' . $gridID] == 'delete') {
 			$COrderReg = new COrderReg();
-			foreach ($_POST['ID'] as $regID) {
+			foreach ($_REQUEST['ID'] as $regID) {
 				if (!$COrderReg->Delete($regID)) {
 					ShowError($COrderReg->LAST_ERROR);
 					return false;
@@ -136,15 +135,17 @@ unset($arFields);
 
 $arResult['FORM_ID'] = !empty($arParams['FORM_ID']) ? $arParams['FORM_ID'] : 'ORDER_FORMED_GROUP_EDIT_V12';
 $arResult['GRID_ID'] = 'ORDER_FORMED_GROUP_EDIT_V12';
+$arResult['REG_FORM_ID'] = $arResult['FORM_ID'].'_REG_LIST';
+$arResult['REG_GRID_ID'] = $arResult['GRID_ID'].'_REG_LIST';
 
 
 do{
 	if ($_SERVER['REQUEST_METHOD'] == 'POST' && check_bitrix_sessid())
 	{
-
 		$bVarsFromForm = true;
 		$DB->StartTransaction();
-		if(isset($_POST['save']) || isset($_POST['saveAndView']) || isset($_POST['saveAndAdd']) || isset($_POST['apply']))
+		if(isset($_POST['save']) || isset($_POST['saveAndView']) || isset($_POST['saveAndAdd']) || isset($_POST['apply'])
+			|| $_REQUEST['action_button_' . $arResult['REG_GRID_ID']] == 'delete')
 		{
 			$arSrcElement = $bEdit ? $arResult['ELEMENT'] : array();
 			$arFields = array();
@@ -177,7 +178,7 @@ do{
 			$ID = isset($arResult['ELEMENT']['ID']) ? $arResult['ELEMENT']['ID'] : '';
 
 			if($arResult['ELEMENT']['ID']!='') {
-				if(!ProcessRegs($ID,$arResult['GRID_ID'])) {
+				if(!ProcessRegs($ID,$arResult['REG_GRID_ID'])) {
 					$DB->Rollback();
 					break;
 				}
@@ -202,7 +203,8 @@ do{
 
 			$DB->Commit();
 
-			if (isset($_POST['apply']))
+			if (isset($_POST['apply'])
+				|| $_REQUEST['action_button_' . $arResult['REG_GRID_ID']] == 'delete')
 			{
 				//if (COrderFormedGroup::CheckUpdatePermission($ID))
 				//{
@@ -295,6 +297,7 @@ $arResult['FIELDS']['tab_1'][] = array(
 	),
 	'persistent' => true
 );
+
 $arResult['FIELDS']['tab_1'][] = array(
 	'id' => 'NOMEN_ID',
 	'name' => GetMessage('ORDER_FIELD_NOMEN_ID'),

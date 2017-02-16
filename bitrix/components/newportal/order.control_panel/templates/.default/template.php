@@ -9,6 +9,7 @@ $ID = $arResult['ID'];
 $IDLc = strtolower($ID);
 $items = isset($arResult['ITEMS']) ? $arResult['ITEMS'] : array();
 $activeItemID =  isset($arResult['ACTIVE_ITEM_ID']) ? $arResult['ACTIVE_ITEM_ID'] : '';
+$activeItemID=explode('.',$activeItemID);
 $containerID = "order_ctrl_panel_{$IDLc}";
 $wrapperID = "order_ctrl_panel_wrap_{$IDLc}";
 $itemWrapperID = "order_ctrl_panel_items_{$IDLc}";
@@ -29,7 +30,7 @@ $additionalContainerID = '';
 		foreach($items as &$item):
 			$itemID = isset($item['ID']) ? $item['ID'] : '';
 			$itemIDLc = strtolower($itemID);
-			$isActive = $itemID === $activeItemID;
+			$isActive = in_array($itemID,$activeItemID,true);
 			$url = isset($item['URL']) ? $item['URL'] : '#';
 			$icon = isset($item['ICON']) ? strtolower($item['ICON']) : '';
 			$name = isset($item['NAME']) ? $item['NAME'] : $itemID;
@@ -69,9 +70,10 @@ $additionalContainerID = '';
 				$childItemID = isset($childItem['ID']) ? $childItem['ID'] : '';
 				if($childItemID === '')
 					continue;
-
+				$isActiveChild = in_array($childItemID,$activeItemID,true) && $isActive;
 				$itemInfo['childItems'][] = array(
 					'id' => $childItemID,
+					'isActive' => $isActiveChild,
 					'name' => isset($childItem['NAME']) ? $childItem['NAME'] : '',
 					'icon' => isset($childItem['ICON']) ? $childItem['ICON'] : '',
 					'url' => isset($childItem['URL']) ? $childItem['URL'] : ''
@@ -84,7 +86,7 @@ $additionalContainerID = '';
 
 			$itemContainerID = "{$itemContainerPrefix}{$itemIDLc}";
 			$itemContainerIDs[] = $itemContainerID;
-			?><div class="order-menu-item-wrap" id="<?=htmlspecialcharsbx($itemContainerID)?>"><a href="<?=htmlspecialcharsbx($url)?>" class="order-menu-item<?=$icon !== '' ? ' order-menu-'.htmlspecialcharsbx($icon) : ''?><?=$isActive ? ' order-menu-item-active' : ''?>" title="<?=htmlspecialcharsbx($title)?>"><span class="order-menu-icon"></span><span class="order-menu-name"><?=htmlspecialcharsbx($briefName)?></span><?
+			?><div class="order-menu-item-wrap" id="<?=htmlspecialcharsbx($itemContainerID)?>"><a href="<?=htmlspecialcharsbx($url)?>" class="order-menu-item<?=$icon !== '' ? ' order-menu-'.htmlspecialcharsbx($icon) : ''?><?=$isActive ? ' order-menu-item-active order-menu-item-selected' : ''?>" title="<?=htmlspecialcharsbx($title)?>"><span class="order-menu-icon"></span><span class="order-menu-name"><?=htmlspecialcharsbx($briefName)?></span><?
 				if ($itemID == 'STREAM'):
 					?><span class="order-menu-icon-counter order-menu-icon-counter-grey" id="order_menu_counter" style="display: <?=($counter > 0 ? "inline-block": "none")?>;"><?=$counter <= 99 ? $counter : '99+' ?></span><?
 				elseif($counter > 0):

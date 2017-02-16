@@ -6,7 +6,7 @@ $APPLICATION->IncludeComponent(
 	'',
 	array(
 		'ID' => 'FORMED_GROUP_EDIT',
-		'ACTIVE_ITEM_ID' => 'FORMED_GROUP',
+		'ACTIVE_ITEM_ID' => 'STRUCTURE.FORMED_GROUP',
 		'PATH_TO_PHYSICAL_LIST' => isset($arResult['PATH_TO_PHYSICAL_LIST']) ? $arResult['PATH_TO_PHYSICAL_LIST'] : '',
 		'PATH_TO_PHYSICAL_EDIT' => isset($arResult['PATH_TO_PHYSICAL_EDIT']) ? $arResult['PATH_TO_PHYSICAL_EDIT'] : '',
 		'PATH_TO_CONTACT_LIST' => isset($arResult['PATH_TO_CONTACT_LIST']) ? $arResult['PATH_TO_CONTACT_LIST'] : '',

@@ -70,7 +70,7 @@ foreach($arResult['REG'] as $id => $el) {
             )
         ),
         'data' => $el,
-        'editable' => $el['PERM_EDIT'] && ($arResult['INTERNAL']?true:($el['SHARED']=='Y'?false:true))
+        'editable' => $el['PERM_EDIT'] && ($el['SHARED']=='Y'?false:($arResult['INTERNAL']?true:true))
     );
     if($el['SHARED']=='N' && $el['PERM_DELETE']) {
         $data['actions'][]=array(
